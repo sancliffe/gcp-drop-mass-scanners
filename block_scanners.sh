@@ -4,7 +4,7 @@
 set -e
 
 # --- CONFIGURATION ---
-PROJECT_ID="project-67b89d13-0fb7-47c0-92b"
+PROJECT_ID=""
 NETWORK_name="default"
 RULE_NAME="network-drop-mass-scanners"
 
