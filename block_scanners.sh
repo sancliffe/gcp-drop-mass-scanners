@@ -17,6 +17,7 @@ TARGET_RANGES=(
     "94.102.49.0/24"     # Shodan Census Indexing Block
     "65.49.1.0/24"       # Shadowserver Secondary Block
     "35.203.210.0/24"    # Palo Alto Networks / Cortex Xpanse Scanners
+    "18.116.101.0/24"    # VisionHeight / AWS Commercial Scanners
 )
 
 # Join the array elements into a comma-separated string
