@@ -10,14 +10,15 @@ RULE_NAME="network-drop-mass-scanners"
 
 # --- IP BLOCKS TO BLOCK ---
 TARGET_RANGES=(
-    "184.105.136.0/22"   # Hurricane Electric / Network Indexers
-    "141.212.0.0/16"     # Censys Scanning Subnets
-    "162.243.128.0/19"   # DigitalOcean Scanner Blocks
-    "71.6.232.0/24"      # CariNet Scanning Block
-    "94.102.49.0/24"     # Shodan Census Indexing Block
-    "65.49.1.0/24"       # Shadowserver Secondary Block
-    "35.203.210.0/24"    # Palo Alto Networks / Cortex Xpanse Scanners
-    "18.116.101.0/24"    # VisionHeight / AWS Commercial Scanners
+    "184.105.136.0/22"   # Hurricane Electric
+    "141.212.0.0/16"     # Censys
+    "162.243.128.0/19"   # DigitalOcean
+    "71.6.232.0/24"      # CariNet
+    "94.102.49.0/24"     # Shodan
+    "65.49.1.0/24"       # Shadowserver
+    "35.203.210.0/23"    # Palo Alto Cortex Xpanse (Expanded to /23 to catch 211.x)
+    "18.116.101.0/24"    # VisionHeight
+    "94.26.106.0/24"     # Add New: Persistent scanner block seen on July 7th
 )
 
 # Join the array elements into a comma-separated string
