@@ -33,6 +33,7 @@ This makes the script idempotent — safe to re-run any time you add or remove r
 | `35.203.210.0/23` | Palo Alto Cortex Xpanse (expanded to /23 to catch `.211.x`) |
 | `18.116.101.0/24` | VisionHeight |
 | `94.26.106.0/24` | Persistent scanner block observed July 7th |
+| `216.180.246.0/24` | Nokia Deepfield Scanners |
 
 > This list is maintained by hand inside the script. Check `block_scanners.sh` for the authoritative, up-to-date list — this table may lag behind new additions.
 
