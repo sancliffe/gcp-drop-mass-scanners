@@ -92,4 +92,4 @@ Because the script is idempotent, it's a good candidate for scheduling (e.g. via
 
 ## License
 
-Add your preferred license here (e.g. MIT).
+This project is licensed under the MIT License — see the LICENSE file for details.
