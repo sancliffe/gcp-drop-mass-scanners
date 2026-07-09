@@ -8,7 +8,7 @@ PROJECT_ID=""
 NETWORK_name="default"
 RULE_NAME="network-drop-mass-scanners"
 
-# --- IP BLOCKS TO BLOCK ---
+# --- IP BLOCKS TO BLOCK THAT HAVE SCANNED MY VM INSTANCE ---
 TARGET_RANGES=(
     "184.105.136.0/22"   # Hurricane Electric
     "141.212.0.0/16"     # Censys
@@ -19,6 +19,7 @@ TARGET_RANGES=(
     "35.203.210.0/23"    # Palo Alto Cortex Xpanse (Expanded to /23 to catch 211.x)
     "18.116.101.0/24"    # VisionHeight
     "94.26.106.0/24"     # Add New: Persistent scanner block seen on July 7th
+    "216.180.246.0/24"   # Nokia Deepfield Scanners
 )
 
 # Join the array elements into a comma-separated string
