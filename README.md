@@ -1,65 +1,94 @@
 # gcp-drop-mass-scanners
 
-A lightweight, automated solution for blocking traffic from known internet mass scanners — such as **Shodan**, **Censys**, **Palo Alto Expanse**, **LeakIX**, and others — from reaching your Google Cloud Platform (GCP) infrastructure.
+A lightweight, automated solution for blocking traffic from known internet mass scanners — such as Shodan, Censys, Palo Alto Cortex Xpanse, and others — from reaching your Google Cloud Platform (GCP) infrastructure.
 
-By proactively dropping this traffic at the edge using **Google Cloud Armor** and/or **VPC Firewall Rules**, this project helps you:
+The repo currently ships a single script, `block_scanners.sh`, which creates or updates a GCP VPC firewall rule that denies **all ingress traffic** from a curated list of known scanner/indexer IP ranges.
 
-- 🔇 **Reduce log noise** from opportunistic, non-malicious reconnaissance scanning
-- 💸 **Save on bandwidth / egress costs** associated with responding to scanner probes
-- 🕵️ **Reduce the visibility** of your infrastructure to mass internet-wide scanning services
-- 🛡️ **Lower your attack surface** by cutting down the reconnaissance data available to attackers who rely on these platforms
+## How it works
 
-## How It Works
+The script:
 
-Mass internet scanning services continuously sweep the entire IPv4 (and increasingly IPv6) address space and publish their findings, often making them searchable by anyone. Many of these services publish the IP ranges they scan from.
+1. Joins a hardcoded array of scanner CIDR ranges (`TARGET_RANGES`) into a single comma-separated string.
+2. Checks whether a firewall rule named `network-drop-mass-scanners` already exists in the target GCP project.
+3. **If the rule exists**, it updates the rule's `--source-ranges` to match the current list.
+4. **If the rule does not exist**, it creates a new `DENY` ingress rule with:
+   - `--action=DENY`
+   - `--rules=all`
+   - `--direction=INGRESS`
+   - `--priority=10`
+   - the configured source ranges
 
-This repository maintains and applies rules that:
+This makes the script idempotent — safe to re-run any time you add or remove ranges, without needing to manually delete and recreate the rule.
 
-1. Pull in known IP ranges/addresses associated with mass scanning services
-2. Convert them into GCP-compatible firewall rule / Cloud Armor security policy definitions
-3. Apply those rules to your GCP project so matching traffic is dropped before it reaches your workloads
+## Blocked ranges (as of this writing)
+
+| CIDR | Source / Notes |
+|---|---|
+| `184.105.136.0/22` | Hurricane Electric |
+| `141.212.0.0/16` | Censys |
+| `162.243.128.0/19` | DigitalOcean |
+| `71.6.232.0/24` | CariNet |
+| `94.102.49.0/24` | Shodan |
+| `65.49.1.0/24` | Shadowserver |
+| `35.203.210.0/23` | Palo Alto Cortex Xpanse (expanded to /23 to catch `.211.x`) |
+| `18.116.101.0/24` | VisionHeight |
+| `94.26.106.0/24` | Persistent scanner block observed July 7th |
+
+> This list is maintained by hand inside the script. Check `block_scanners.sh` for the authoritative, up-to-date list — this table may lag behind new additions.
 
 ## Prerequisites
 
-- A Google Cloud Platform project with billing enabled
-- `gcloud` CLI installed and authenticated ([install guide](https://cloud.google.com/sdk/docs/install))
-- Sufficient IAM permissions to manage firewall rules and/or Cloud Armor security policies (e.g. `roles/compute.securityAdmin`)
-- [Terraform](https://developer.hashicorp.com/terraform/install) (if using the Terraform deployment path)
-
-## Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/sancliffe/gcp-drop-mass-scanners.git
-cd gcp-drop-mass-scanners
-```
-
-Authenticate with GCP and set your target project:
-
-```bash
-gcloud auth login
-gcloud config set project YOUR_PROJECT_ID
-```
-
-Review and apply the rules using your preferred deployment method (Terraform or `gcloud`/scripts), following the instructions in this repository.
+- [`gcloud` CLI](https://cloud.google.com/sdk/docs/install) installed and authenticated (`gcloud auth login`)
+- Sufficient IAM permissions on the target project to create/update firewall rules (e.g. `roles/compute.securityAdmin` or equivalent)
+- A GCP project with a VPC network (default network name assumed unless configured otherwise)
 
 ## Configuration
 
-Adjust the source IP lists and target scope to fit your environment before applying:
+Before running, edit the configuration block at the top of `block_scanners.sh`:
 
-| Setting | Description |
-|---|---|
-| Scanner sources | Which mass-scanner services' IP ranges to block (Shodan, Censys, Expanse, LeakIX, etc.) |
-| Enforcement mode | Cloud Armor security policy vs. VPC firewall rule |
-| Scope | Global (Cloud Armor / load balancer) vs. per-VPC/network (firewall rules) |
-| Logging | Enable/disable logging on dropped traffic for auditing |
+```bash
+PROJECT_ID=""          # Your GCP project ID (required)
+NETWORK_name="default" # The VPC network the rule should apply to
+RULE_NAME="network-drop-mass-scanners"
+```
 
-## Keeping IP Lists Up to Date
+`PROJECT_ID` must be set — the script does not prompt for it and will fail against `gcloud` if left blank.
 
-Mass scanner IP ranges change over time. It's recommended to periodically refresh the source IP lists and re-apply the rules (e.g. via a scheduled CI job or Cloud Scheduler + Cloud Function) to ensure blocking remains effective.
+## Usage
 
-## Disclaimer
+```bash
+chmod +x block_scanners.sh
+./block_scanners.sh
+```
 
-This project blocks traffic from *known, published* scanner ranges. It is not a substitute for a complete security strategy and does not protect against targeted attacks, scanners using unlisted/rotating IPs, or scanners that intentionally evade published ranges. Always test rule changes in a non-production environment before rolling out broadly, as overly broad rules can inadvertently block legitimate traffic.
+On success you'll see output confirming whether the rule was created or updated, followed by:
 
+```
+Firewall infrastructure update complete.
+```
+
+## Updating the block list
+
+To add or remove a range, edit the `TARGET_RANGES` array in `block_scanners.sh` and re-run the script. Since the rule is checked for existence first, re-running simply updates `--source-ranges` on the existing rule rather than duplicating it.
+
+```bash
+TARGET_RANGES=(
+    "184.105.136.0/22" # Hurricane Electric
+    "203.0.113.0/24"   # New range you're adding
+)
+```
+
+## Automating this
+
+Because the script is idempotent, it's a good candidate for scheduling (e.g. via `cron`, a CI pipeline, or Cloud Scheduler + Cloud Run/Functions) if you want to keep firewall rules in sync with an external or periodically updated scanner IP feed.
+
+## Notes & caveats
+
+- The script uses `set -e`, so it will exit immediately on any `gcloud` error (e.g. bad project ID, insufficient permissions).
+- The rule denies **all protocols/ports** (`--rules=all`) from the listed ranges — it's a blanket edge block, not a targeted port rule.
+- `--priority=10` gives this rule high precedence; make sure it doesn't unintentionally conflict with other firewall rules in your VPC.
+- IP ranges owned by scanning services can change over time. Periodically verify entries against current provider documentation (e.g. Shodan, Censys, Palo Alto Cortex Xpanse) rather than assuming this list stays accurate indefinitely.
+
+## License
+
+Add your preferred license here (e.g. MIT).
