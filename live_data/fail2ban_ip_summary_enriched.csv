@@ -1,0 +1,314 @@
+IP Address,First Seen,Last Seen,Reason(s) / Jail(s),Connection Attempts,Times Banned,ASN & Owner,Reverse DNS (PTR),Velocity (Attempts/Hour),AbuseIPDB Confidence Score (%)
+164.90.232.37,2026-07-10 03:31:31,2026-07-10 03:31:33,Repeat offender (recidive); SMTP/mail brute force,10,1,AS14061 - DigitalOcean,No PTR record,18000.0,100
+207.154.216.114,2026-06-17 08:22:12,2026-06-17 08:22:14,SMTP/mail brute force,9,1,AS14061 - DigitalOcean,No PTR record,16200.0,100
+51.15.19.10,2026-06-13 13:26:29,2026-06-13 13:26:31,SSH brute force,5,1,Unknown ASN/Provider,51-15-19-10.rev.poneytelecom.eu,9000.0,100
+85.93.90.92,2026-06-10 13:12:15,2026-06-10 13:12:18,SSH brute force,5,1,Unknown ASN/Provider,static-ip-85-93-90-92.inaddr.ip-pool.com,6000.0,100
+39.97.44.13,2026-06-08 22:42:13,2026-06-08 22:42:19,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,3000.0,100
+101.47.28.226,2026-06-10 05:26:35,2026-06-10 05:26:41,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,3000.0,100
+34.147.71.207,2026-06-10 17:48:51,2026-06-10 17:48:57,SSH brute force,5,1,Unknown ASN/Provider,207.71.147.34.bc.googleusercontent.com,3000.0,100
+43.160.253.60,2026-06-11 05:04:01,2026-06-11 05:04:07,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,3000.0,100
+152.32.133.191,2026-07-05 01:45:33,2026-07-05 01:45:38,Repeat offender (recidive); SMTP/mail brute force,4,1,AS135377 - UCLOUD Information Technology,No PTR record,2880.0,100
+45.142.154.40,2026-06-26 22:10:28,2026-06-26 22:10:32,SMTP/mail brute force,3,0,Unknown ASN/Provider,No PTR record,2700.0,100
+20.235.157.149,2026-06-12 13:12:28,2026-06-12 13:12:37,SSH brute force,5,1,AS8075 - Microsoft Azure,No PTR record,2000.0,100
+103.49.62.60,2026-06-13 13:33:20,2026-06-13 13:33:29,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,2000.0,100
+222.102.21.104,2026-06-08 16:49:33,2026-06-08 16:49:43,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,1800.0,100
+123.56.8.132,2026-06-09 05:08:13,2026-06-09 05:08:24,SSH brute force,5,1,AS37963 - Alibaba Cloud,No PTR record,1636.36,100
+95.47.246.223,2026-06-13 09:18:03,2026-06-13 09:18:14,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,1636.36,100
+193.163.187.123,2026-06-12 11:08:45,2026-06-12 11:08:59,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,1285.71,100
+101.36.97.80,2026-06-27 09:02:14,2026-06-27 09:02:37,SMTP/mail brute force,7,1,Unknown ASN/Provider,No PTR record,1095.65,100
+118.194.248.4,2026-06-26 07:48:31,2026-06-26 07:48:55,SMTP/mail brute force,7,1,Unknown ASN/Provider,No PTR record,1050.0,100
+118.26.104.78,2026-07-04 19:16:55,2026-07-04 19:17:15,Repeat offender (recidive); SMTP/mail brute force,5,1,Unknown ASN/Provider,No PTR record,900.0,100
+156.229.21.54,2026-07-06 10:30:13,2026-07-06 10:30:33,Repeat offender (recidive); SMTP/mail brute force,5,1,AS47583 - Hostinger,No PTR record,900.0,100
+128.14.237.43,2026-07-03 16:48:54,2026-07-03 16:49:16,Repeat offender (recidive); SMTP/mail brute force,5,1,Unknown ASN/Provider,No PTR record,818.18,100
+118.194.234.29,2026-06-26 13:00:05,2026-06-26 13:00:28,SMTP/mail brute force,5,1,Unknown ASN/Provider,No PTR record,782.61,100
+218.250.28.248,2026-06-13 04:56:00,2026-06-13 04:56:24,SSH brute force,5,1,Unknown ASN/Provider,n218250028248.netvigator.com,750.0,100
+104.218.165.188,2026-07-06 06:05:37,2026-07-06 06:05:57,Repeat offender (recidive); SMTP/mail brute force,4,1,AS36352 - ColoCrossing,No PTR record,720.0,100
+193.32.162.103,2026-06-27 23:29:30,2026-06-27 23:29:47,SMTP/mail brute force,2,0,AS48282 / AS216071 - VDSina,No PTR record,423.53,100
+18.219.28.201,2026-07-09 12:46:03,2026-07-09 12:47:06,Repeat offender (recidive); SMTP/mail brute force,4,1,AS16509 - Amazon AWS,ec2-18-219-28-201.us-east-2.compute.amazonaws.com,228.57,100
+193.32.162.193,2026-07-08 19:43:00,2026-07-08 19:44:25,Repeat offender (recidive); SMTP/mail brute force,4,1,AS48282 / AS216071 - VDSina,No PTR record,169.41,100
+3.131.220.121,2026-06-29 11:38:34,2026-06-29 11:42:36,SMTP/mail brute force,4,0,AS16509 - Amazon AWS,scan.visionheight.com,59.5,100
+117.89.254.46,2026-06-10 03:43:26,2026-06-10 03:49:28,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,49.72,100
+31.70.71.228,2026-06-10 17:12:35,2026-06-10 17:20:47,SSH brute force,5,1,Unknown ASN/Provider,ip31-70-71-228.pbiaas.com,36.59,100
+158.94.210.8,2026-07-10 05:49:46,2026-07-10 05:59:50,Repeat offender (recidive); SMTP/mail brute force,4,1,AS202412 - Omegatech LTD,No PTR record,23.84,100
+31.76.27.231,2026-06-12 10:57:44,2026-06-12 11:03:47,SSH brute force,2,0,Unknown ASN/Provider,No PTR record,19.83,100
+45.39.60.82,2026-06-12 11:14:14,2026-06-12 11:36:23,SSH brute force,7,1,Unknown ASN/Provider,No PTR record,18.96,100
+80.94.92.184,2026-06-09 09:43:44,2026-06-09 12:21:37,SSH brute force,39,0,Unknown ASN/Provider,No PTR record,14.82,100
+45.43.37.254,2026-06-09 14:21:08,2026-06-09 14:30:40,SSH brute force,2,0,Unknown ASN/Provider,No PTR record,12.59,100
+171.231.192.219,2026-06-12 04:33:00,2026-06-12 05:07:50,SSH brute force,7,0,Unknown ASN/Provider,dynamic-ip-adsl.viettel.vn,12.06,100
+89.23.113.208,2026-06-11 13:58:54,2026-06-11 14:11:51,SSH brute force,2,0,Unknown ASN/Provider,154851.ip-ptr.tech,9.27,100
+93.174.95.106,2026-07-09 17:27:37,2026-07-09 17:27:38,Repeat offender (recidive); SMTP/mail brute force,8,1,Unknown ASN/Provider,battery.census.shodan.io,8.0,100
+161.35.211.5,2026-07-09 22:18:47,2026-07-09 22:18:48,Repeat offender (recidive); SMTP/mail brute force,8,1,AS14061 - DigitalOcean,No PTR record,8.0,100
+210.211.122.97,2026-06-10 08:18:29,2026-06-10 23:30:00,SSH brute force,119,1,Unknown ASN/Provider,No PTR record,7.83,100
+178.253.31.121,2026-06-09 19:34:55,2026-06-10 05:07:38,SSH brute force,69,0,Unknown ASN/Provider,No PTR record,7.23,100
+118.26.111.107,2026-06-08 03:57:06,2026-06-08 05:05:34,SSH brute force,8,0,Unknown ASN/Provider,No PTR record,7.01,100
+165.232.125.188,2026-06-08 07:33:59,2026-06-08 07:57:15,SSH brute force,2,0,AS14061 - DigitalOcean,No PTR record,5.16,100
+38.110.4.150,2026-06-13 03:02:15,2026-06-13 03:02:16,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,5.0,100
+77.222.35.115,2026-06-09 19:45:43,2026-06-09 21:11:09,SSH brute force,7,0,Unknown ASN/Provider,No PTR record,4.92,100
+176.193.141.80,2026-06-13 04:29:13,2026-06-13 19:40:56,SSH brute force,69,1,Unknown ASN/Provider,No PTR record,4.54,100
+107.189.24.77,2026-06-08 16:12:33,2026-06-08 19:02:52,SSH brute force,9,0,Unknown ASN/Provider,77.24.189.107.static.cloudzy.com,3.17,100
+45.148.10.157,2026-06-13 16:36:53,2026-06-13 18:34:13,SSH brute force,6,0,Unknown ASN/Provider,No PTR record,3.07,100
+45.148.10.141,2026-06-13 17:39:00,2026-06-13 19:50:26,SSH brute force,6,0,Unknown ASN/Provider,No PTR record,2.74,100
+45.227.254.170,2026-06-13 16:15:53,2026-06-13 18:06:40,SSH brute force,5,0,Unknown ASN/Provider,No PTR record,2.71,100
+45.148.10.147,2026-06-13 17:04:33,2026-06-13 19:43:36,SSH brute force,7,0,Unknown ASN/Provider,No PTR record,2.64,100
+185.156.73.233,2026-06-08 03:21:42,2026-06-08 12:34:49,SSH brute force,19,0,Unknown ASN/Provider,No PTR record,2.06,100
+82.222.190.61,2026-06-09 10:48:31,2026-06-09 10:48:31,SSH brute force,2,0,Unknown ASN/Provider,host-82-222-190-61.reverse.superonline.net,2.0,100
+20.163.32.78,2026-06-25 19:31:19,2026-06-25 19:31:19,SMTP/mail brute force,2,0,AS8075 - Microsoft Azure,azpdwsggbryd.stretchoid.com,2.0,100
+40.124.186.156,2026-06-29 23:19:44,2026-06-29 23:19:44,SMTP/mail brute force,2,0,AS8075 - Microsoft Azure,azpdsgimpili.stretchoid.com,2.0,100
+89.248.167.131,2026-07-02 14:40:50,2026-07-02 14:40:51,SMTP/mail brute force,2,0,Unknown ASN/Provider,mason.census.shodan.io,2.0,100
+20.80.88.32,2026-07-03 02:35:14,2026-07-03 02:35:14,SMTP/mail brute force,2,0,AS8075 - Microsoft Azure,azpdcs6et1hb.stretchoid.com,2.0,100
+40.124.120.52,2026-07-07 08:26:53,2026-07-07 08:26:53,SMTP/mail brute force,2,0,AS8075 - Microsoft Azure,azpdsg2stdsk.stretchoid.com,2.0,100
+45.148.10.152,2026-06-13 16:08:31,2026-06-13 19:23:07,SSH brute force,5,0,Unknown ASN/Provider,No PTR record,1.54,100
+45.148.10.151,2026-06-13 16:29:51,2026-06-13 18:47:51,SSH brute force,3,0,Unknown ASN/Provider,No PTR record,1.3,100
+80.94.92.182,2026-06-08 15:35:35,2026-06-12 10:34:11,SSH brute force,111,0,Unknown ASN/Provider,No PTR record,1.22,100
+218.157.163.203,2026-06-10 23:48:42,2026-06-11 03:09:34,SSH brute force,4,0,Unknown ASN/Provider,No PTR record,1.19,100
+80.94.95.116,2026-06-08 05:00:16,2026-06-08 12:37:00,SSH brute force,9,0,Unknown ASN/Provider,No PTR record,1.18,100
+80.94.95.115,2026-06-08 03:09:58,2026-06-08 10:26:24,SSH brute force,8,0,Unknown ASN/Provider,No PTR record,1.1,100
+139.59.149.2,2026-07-03 06:00:03,2026-07-03 14:51:14,Repeat offender (recidive); SMTP/mail brute force,9,1,AS14061 - DigitalOcean,No PTR record,1.02,100
+154.83.12.89,2026-06-08 02:54:35,2026-06-08 02:54:35,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+34.52.146.143,2026-06-08 07:03:27,2026-06-08 07:03:27,SSH brute force,1,0,AS15169 - Google Cloud,143.146.52.34.bc.googleusercontent.com,1.0,100
+64.62.156.189,2026-06-08 12:34:34,2026-06-08 12:34:34,SSH brute force,1,0,AS6939 - Hurricane Electric,scan-86-7.shadowserver.io,1.0,100
+8.221.139.48,2026-06-08 13:32:59,2026-06-08 13:32:59,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+34.38.175.130,2026-06-08 14:38:25,2026-06-08 14:38:25,SSH brute force,1,0,AS15169 - Google Cloud,130.175.38.34.bc.googleusercontent.com,1.0,100
+218.71.38.151,2026-06-08 16:37:27,2026-06-08 16:37:27,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+120.48.75.127,2026-06-09 02:42:46,2026-06-09 02:42:46,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+102.220.160.39,2026-06-09 04:08:42,2026-06-09 04:08:42,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+47.101.137.46,2026-06-09 07:44:49,2026-06-09 07:44:49,SSH brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,100
+34.52.132.140,2026-06-09 07:57:05,2026-06-09 07:57:05,SSH brute force,1,0,AS15169 - Google Cloud,140.132.52.34.bc.googleusercontent.com,1.0,100
+176.65.132.17,2026-06-09 08:53:36,2026-06-09 08:53:36,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+64.62.156.19,2026-06-09 10:47:06,2026-06-09 10:47:06,SSH brute force,1,0,AS6939 - Hurricane Electric,scan-60-9.shadowserver.io,1.0,100
+91.92.42.10,2026-06-09 11:06:45,2026-06-09 11:06:45,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+170.75.242.105,2026-06-09 13:23:53,2026-06-09 13:23:53,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+64.62.156.174,2026-06-10 00:43:55,2026-06-10 00:43:55,SSH brute force,1,0,AS6939 - Hurricane Electric,scan-85-2.shadowserver.io,1.0,100
+34.38.45.137,2026-06-10 03:31:55,2026-06-10 03:31:55,SSH brute force,1,0,AS15169 - Google Cloud,137.45.38.34.bc.googleusercontent.com,1.0,100
+104.155.37.162,2026-06-10 03:32:16,2026-06-10 03:32:16,SSH brute force,1,0,AS15169 - Google Cloud,162.37.155.104.bc.googleusercontent.com,1.0,100
+107.155.48.46,2026-06-10 07:18:58,2026-06-10 07:18:58,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+124.70.167.181,2026-06-10 08:19:36,2026-06-10 08:19:36,SSH brute force,1,0,AS136907 - Huawei Cloud,ecs-124-70-167-181.compute.hwclouds-dns.com,1.0,100
+38.207.133.27,2026-06-11 02:25:40,2026-06-11 02:25:40,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+64.62.197.98,2026-06-11 05:33:31,2026-06-11 05:33:31,SSH brute force,1,0,Unknown ASN/Provider,scan-39g.shadowserver.io,1.0,100
+34.77.138.242,2026-06-11 05:44:32,2026-06-11 05:44:32,SSH brute force,1,0,Unknown ASN/Provider,242.138.77.34.bc.googleusercontent.com,1.0,100
+35.189.215.46,2026-06-11 05:44:38,2026-06-11 05:44:38,SSH brute force,1,0,Unknown ASN/Provider,46.215.189.35.bc.googleusercontent.com,1.0,100
+39.104.64.139,2026-06-11 14:20:50,2026-06-11 14:20:50,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+34.62.20.180,2026-06-12 02:21:13,2026-06-12 02:21:13,SSH brute force,1,0,Unknown ASN/Provider,180.20.62.34.bc.googleusercontent.com,1.0,100
+35.233.114.184,2026-06-12 02:23:33,2026-06-12 02:23:33,SSH brute force,1,0,Unknown ASN/Provider,184.114.233.35.bc.googleusercontent.com,1.0,100
+47.79.238.97,2026-06-12 04:20:49,2026-06-12 04:20:49,SSH brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,100
+27.79.46.101,2026-06-12 04:24:35,2026-06-12 04:24:35,SSH brute force,1,0,Unknown ASN/Provider,localhost,1.0,100
+64.62.197.151,2026-06-12 04:57:58,2026-06-12 04:57:58,SSH brute force,1,0,Unknown ASN/Provider,scan-48o.shadowserver.io,1.0,100
+222.89.169.98,2026-06-12 06:36:21,2026-06-12 06:36:21,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+43.156.229.76,2026-06-12 07:25:59,2026-06-12 07:25:59,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+117.50.130.182,2026-06-12 16:22:59,2026-06-12 16:22:59,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+45.156.87.147,2026-06-12 18:33:03,2026-06-12 18:33:03,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+8.217.193.233,2026-06-13 01:04:53,2026-06-13 01:04:53,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+64.62.197.55,2026-06-13 04:19:30,2026-06-13 04:19:30,SSH brute force,1,0,Unknown ASN/Provider,scan-45i.shadowserver.io,1.0,100
+152.32.174.171,2026-06-13 05:19:24,2026-06-13 05:19:24,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+34.77.129.75,2026-06-13 07:20:02,2026-06-13 07:20:02,SSH brute force,1,0,Unknown ASN/Provider,75.129.77.34.bc.googleusercontent.com,1.0,100
+45.156.87.204,2026-06-13 09:08:55,2026-06-13 09:08:55,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+115.190.119.177,2026-06-13 11:28:51,2026-06-13 11:28:51,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+47.86.171.75,2026-06-13 12:52:45,2026-06-13 12:52:45,SSH brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,100
+35.216.144.195,2026-06-13 14:08:11,2026-06-13 14:08:11,SSH brute force,1,0,Unknown ASN/Provider,195.144.216.35.bc.googleusercontent.com,1.0,100
+176.65.132.129,2026-06-13 14:46:56,2026-06-13 14:46:56,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+118.194.235.105,2026-06-13 15:46:09,2026-06-13 15:46:09,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+47.103.157.194,2026-06-13 19:05:59,2026-06-13 19:05:59,SSH brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,100
+18.220.136.197,2026-06-16 12:47:21,2026-06-16 12:47:21,SMTP/mail brute force,1,0,AS16509 - Amazon AWS,ec2-18-220-136-197.us-east-2.compute.amazonaws.com,1.0,100
+85.217.149.6,2026-06-16 12:47:21,2026-06-16 12:47:21,SMTP/mail brute force,1,0,Unknown ASN/Provider,o007.scanner.modat.io,1.0,100
+85.217.149.18,2026-06-16 12:59:24,2026-06-16 12:59:24,SMTP/mail brute force,1,0,Unknown ASN/Provider,o019.scanner.modat.io,1.0,100
+71.6.232.30,2026-06-16 21:10:37,2026-06-16 21:10:37,SMTP/mail brute force,1,0,AS10439 - CariNet,No PTR record,1.0,100
+172.174.211.225,2026-06-17 02:25:05,2026-06-17 02:25:05,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdegutluji.stretchoid.com,1.0,100
+34.193.119.44,2026-06-17 05:08:26,2026-06-17 05:08:26,SMTP/mail brute force,1,0,AS16509 - Amazon AWS,ec2-34-193-119-44.compute-1.amazonaws.com,1.0,100
+69.5.169.199,2026-06-17 12:28:49,2026-06-17 12:28:49,SMTP/mail brute force,1,0,Unknown ASN/Provider,69-5-169-199.infrawat.ch,1.0,100
+184.105.247.194,2026-06-17 13:17:59,2026-06-17 13:17:59,SMTP/mail brute force,1,0,AS6939 - Hurricane Electric,scan-13.shadowserver.io,1.0,100
+178.16.52.249,2026-06-17 15:49:08,2026-06-17 15:49:08,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+71.6.232.29,2026-06-24 11:50:16,2026-06-24 11:50:16,SMTP/mail brute force,1,0,AS10439 - CariNet,No PTR record,1.0,100
+20.168.120.101,2026-06-24 14:25:45,2026-06-24 14:25:45,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdws7sbgu8.stretchoid.com,1.0,100
+158.94.208.205,2026-06-24 17:24:44,2026-06-24 17:24:44,SMTP/mail brute force,1,0,AS202412 - Omegatech LTD,No PTR record,1.0,100
+94.231.206.202,2026-06-24 19:47:07,2026-06-24 19:47:07,SMTP/mail brute force,1,0,Unknown ASN/Provider,erickson.probe.onyphe.net,1.0,100
+91.230.168.122,2026-06-25 04:25:10,2026-06-25 04:25:10,SMTP/mail brute force,1,0,Unknown ASN/Provider,ronald.probe.onyphe.net,1.0,100
+71.6.134.231,2026-06-25 04:44:34,2026-06-25 04:44:34,SMTP/mail brute force,1,0,AS10439 - CariNet,No PTR record,1.0,100
+65.49.1.172,2026-06-25 13:45:02,2026-06-25 13:45:02,SMTP/mail brute force,1,0,AS701 - Shadowserver Foundation,scan-73-00.shadowserver.io,1.0,100
+20.42.92.153,2026-06-25 16:42:58,2026-06-25 16:42:58,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdesqxcva1.stretchoid.com,1.0,100
+20.163.15.227,2026-06-25 17:27:49,2026-06-25 17:27:49,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdwgnre0q5.stretchoid.com,1.0,100
+45.144.212.172,2026-06-25 18:05:22,2026-06-25 18:05:22,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+45.156.128.5,2026-06-25 19:40:47,2026-06-25 19:40:47,SMTP/mail brute force,1,0,Unknown ASN/Provider,sh-ams-nl-gp5-wk102a.internet-census.org,1.0,100
+20.171.8.157,2026-06-26 05:47:57,2026-06-26 05:47:57,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdwshnkixg.stretchoid.com,1.0,100
+184.105.247.254,2026-06-26 13:43:40,2026-06-26 13:43:40,SMTP/mail brute force,1,0,AS6939 - Hurricane Electric,scan-13o.shadowserver.io,1.0,100
+159.223.217.240,2026-06-26 22:02:14,2026-06-26 22:02:14,SMTP/mail brute force,1,0,AS14061 - DigitalOcean,portscanner-ams3-02.prod.cyberresilience.io,1.0,100
+91.230.168.19,2026-06-26 23:46:07,2026-06-26 23:46:07,SMTP/mail brute force,1,0,Unknown ASN/Provider,iqra.probe.onyphe.net,1.0,100
+20.163.15.196,2026-06-27 04:56:37,2026-06-27 04:56:37,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdwg11xno2.stretchoid.com,1.0,100
+158.94.211.236,2026-06-27 07:37:24,2026-06-27 07:37:24,SMTP/mail brute force,1,0,AS202412 - Omegatech LTD,No PTR record,1.0,100
+65.49.1.66,2026-06-27 07:56:13,2026-06-27 07:56:13,SMTP/mail brute force,1,0,AS701 - Shadowserver Foundation,scan-56a.shadowserver.io,1.0,100
+20.169.105.85,2026-06-27 11:46:14,2026-06-27 11:46:14,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdwsr56w31.stretchoid.com,1.0,100
+94.231.206.35,2026-06-27 23:51:44,2026-06-27 23:51:44,SMTP/mail brute force,1,0,Unknown ASN/Provider,jaden.probe.onyphe.net,1.0,100
+69.5.169.185,2026-06-28 04:54:03,2026-06-28 04:54:03,SMTP/mail brute force,1,0,Unknown ASN/Provider,69-5-169-185.infrawat.ch,1.0,100
+20.169.107.142,2026-06-28 15:40:58,2026-06-28 15:40:58,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdwgf7j7n4.stretchoid.com,1.0,100
+3.132.26.232,2026-06-28 18:03:59,2026-06-28 18:03:59,SMTP/mail brute force,1,0,AS16509 - Amazon AWS,scan.visionheight.com,1.0,100
+172.202.118.18,2026-06-28 18:20:37,2026-06-28 18:20:37,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdcs2te0qh.stretchoid.com,1.0,100
+178.16.53.69,2026-06-28 19:10:01,2026-06-28 19:10:01,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+20.221.60.108,2026-06-29 00:26:37,2026-06-29 00:26:37,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdcgrd4df3.stretchoid.com,1.0,100
+91.92.241.57,2026-06-29 05:32:21,2026-06-29 05:32:21,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+185.169.4.229,2026-06-29 06:00:39,2026-06-29 06:00:39,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+64.62.156.94,2026-06-29 07:46:55,2026-06-29 07:46:55,SMTP/mail brute force,1,0,AS6939 - Hurricane Electric,scan-66-0.shadowserver.io,1.0,100
+135.222.40.73,2026-06-29 23:08:52,2026-06-29 23:08:52,SMTP/mail brute force,1,0,Unknown ASN/Provider,azpdes7fkrbt.stretchoid.com,1.0,100
+20.168.123.0,2026-06-30 03:09:53,2026-06-30 03:09:53,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdwgzchlzq.stretchoid.com,1.0,100
+69.5.169.239,2026-06-30 04:01:48,2026-06-30 04:01:48,SMTP/mail brute force,1,0,Unknown ASN/Provider,69-5-169-239.infrawat.ch,1.0,100
+141.98.9.87,2026-06-30 14:00:49,2026-06-30 14:00:49,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+91.196.152.28,2026-06-30 15:18:06,2026-06-30 15:18:06,SMTP/mail brute force,1,0,Unknown ASN/Provider,sultan.probe.onyphe.net,1.0,100
+71.6.232.23,2026-07-01 00:46:38,2026-07-01 00:46:38,SMTP/mail brute force,1,0,AS10439 - CariNet,No PTR record,1.0,100
+64.62.156.24,2026-07-01 01:39:54,2026-07-01 01:39:54,SMTP/mail brute force,1,0,AS6939 - Hurricane Electric,scan-61-0.shadowserver.io,1.0,100
+178.16.55.94,2026-07-01 03:29:54,2026-07-01 03:29:54,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+20.64.105.221,2026-07-01 06:56:24,2026-07-01 06:56:24,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdsgf8qwj7.stretchoid.com,1.0,100
+52.188.191.193,2026-07-01 14:42:32,2026-07-01 14:42:32,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdegq5r6eo.stretchoid.com,1.0,100
+94.231.206.153,2026-07-01 19:41:13,2026-07-01 19:41:13,SMTP/mail brute force,1,0,Unknown ASN/Provider,clayton.probe.onyphe.net,1.0,100
+195.184.76.247,2026-07-02 04:22:20,2026-07-02 04:22:20,SMTP/mail brute force,1,0,Unknown ASN/Provider,jeremiah.probe.onyphe.net,1.0,100
+40.124.174.148,2026-07-02 04:53:54,2026-07-02 04:53:54,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdsgaelsnc.stretchoid.com,1.0,100
+40.124.180.92,2026-07-02 12:26:37,2026-07-02 12:26:37,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdsglde26g.stretchoid.com,1.0,100
+20.64.104.237,2026-07-02 12:40:14,2026-07-02 12:40:14,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdsgd62xkd.stretchoid.com,1.0,100
+185.169.4.167,2026-07-02 20:24:46,2026-07-02 20:24:46,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+20.168.5.245,2026-07-02 23:45:08,2026-07-02 23:45:08,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdwgew2nrk.stretchoid.com,1.0,100
+71.6.134.235,2026-07-03 01:00:18,2026-07-03 01:00:18,SMTP/mail brute force,1,0,AS10439 - CariNet,centos7134235.aspadmin.net,1.0,100
+94.102.49.193,2026-07-03 06:21:19,2026-07-03 06:21:19,SMTP/mail brute force,1,0,AS35114 - Shodan,cloud.census.shodan.io,1.0,100
+65.49.1.182,2026-07-03 09:40:10,2026-07-03 09:40:10,SMTP/mail brute force,1,0,AS701 - Shadowserver Foundation,scan-74-00.shadowserver.io,1.0,100
+57.152.34.196,2026-07-03 14:18:21,2026-07-03 14:18:21,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdeghufszd.stretchoid.com,1.0,100
+40.67.161.44,2026-07-03 19:52:33,2026-07-03 19:52:33,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdcst8d8du.stretchoid.com,1.0,100
+141.98.9.43,2026-07-03 20:01:57,2026-07-03 20:01:57,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+161.35.70.45,2026-07-03 22:02:18,2026-07-03 22:02:18,SMTP/mail brute force,1,0,AS14061 - DigitalOcean,portscanner-fra1-02.prod.cyberresilience.io,1.0,100
+91.230.168.240,2026-07-03 23:50:36,2026-07-03 23:50:36,SMTP/mail brute force,1,0,Unknown ASN/Provider,rodriguez.probe.onyphe.net,1.0,100
+65.49.20.68,2026-07-04 04:26:34,2026-07-04 04:26:34,SMTP/mail brute force,1,0,AS701 - Shadowserver Foundation,scan-19.shadowserver.io,1.0,100
+45.82.78.108,2026-07-04 16:39:57,2026-07-04 16:39:57,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+20.168.127.154,2026-07-05 01:50:02,2026-07-05 01:50:02,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdwg6hi8uj.stretchoid.com,1.0,100
+193.32.162.211,2026-07-05 03:38:28,2026-07-05 03:38:28,SMTP/mail brute force,1,0,AS48282 / AS216071 - VDSina,No PTR record,1.0,100
+91.231.89.146,2026-07-05 09:07:07,2026-07-05 09:07:07,SMTP/mail brute force,1,0,Unknown ASN/Provider,wyatt.probe.onyphe.net,1.0,100
+20.65.194.116,2026-07-05 18:04:11,2026-07-05 18:04:11,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdssiyhjm1.stretchoid.com,1.0,100
+158.94.211.16,2026-07-06 00:00:13,2026-07-06 00:00:13,SMTP/mail brute force,1,0,AS202412 - Omegatech LTD,No PTR record,1.0,100
+185.169.4.236,2026-07-06 06:12:19,2026-07-06 06:12:19,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+40.124.173.206,2026-07-06 06:44:48,2026-07-06 06:44:48,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdsgcvt7u2.stretchoid.com,1.0,100
+20.81.46.136,2026-07-06 12:40:48,2026-07-06 12:40:48,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdegplhesk.stretchoid.com,1.0,100
+64.89.163.160,2026-07-07 01:53:18,2026-07-07 01:53:18,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+172.174.244.189,2026-07-07 14:20:55,2026-07-07 14:20:55,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdesjy9nbr.stretchoid.com,1.0,100
+135.237.126.169,2026-07-08 01:02:12,2026-07-08 01:02:12,SMTP/mail brute force,1,0,Unknown ASN/Provider,azpdeg66pixh.stretchoid.com,1.0,100
+13.219.1.233,2026-07-08 08:50:11,2026-07-08 08:50:11,SMTP/mail brute force,1,0,AS16509 - Amazon AWS,ec2-13-219-1-233.compute-1.amazonaws.com,1.0,100
+71.6.167.142,2026-07-08 14:18:45,2026-07-08 14:18:45,SMTP/mail brute force,1,0,AS10439 - CariNet,census9.shodan.io,1.0,100
+94.231.206.131,2026-07-08 20:33:01,2026-07-08 20:33:01,SMTP/mail brute force,1,0,Unknown ASN/Provider,albert.probe.onyphe.net,1.0,100
+20.83.167.28,2026-07-08 23:42:08,2026-07-08 23:42:08,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdesvypur9.stretchoid.com,1.0,100
+20.65.193.83,2026-07-09 00:55:05,2026-07-09 00:55:05,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdssukn0ap.stretchoid.com,1.0,100
+91.230.168.64,2026-07-09 04:22:27,2026-07-09 04:22:27,SMTP/mail brute force,1,0,Unknown ASN/Provider,greta.probe.onyphe.net,1.0,100
+178.16.54.36,2026-07-09 06:17:02,2026-07-09 06:17:02,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,100
+20.121.67.158,2026-07-09 12:22:37,2026-07-09 12:22:37,SMTP/mail brute force,1,0,AS8075 - Microsoft Azure,azpdegoxkqo6.stretchoid.com,1.0,100
+66.240.219.146,2026-07-10 05:28:38,2026-07-10 05:28:38,SMTP/mail brute force,1,0,Unknown ASN/Provider,burger.census.shodan.io,1.0,100
+213.209.159.56,2026-06-08 20:31:56,2026-06-13 18:32:57,SSH brute force,87,0,Unknown ASN/Provider,No PTR record,0.74,100
+2.57.121.112,2026-06-08 21:58:05,2026-06-13 16:36:45,SSH brute force,73,0,Unknown ASN/Provider,dns112.personaliseplus.com,0.64,100
+94.26.106.72,2026-07-07 02:30:34,2026-07-07 08:53:40,SMTP/mail brute force,4,0,Unknown ASN/Provider,No PTR record,0.63,100
+45.148.10.121,2026-06-08 05:33:35,2026-06-13 19:13:29,SSH brute force,79,0,Unknown ASN/Provider,No PTR record,0.59,100
+2.57.121.25,2026-06-08 20:32:37,2026-06-13 18:46:24,SSH brute force,65,0,Unknown ASN/Provider,hosting25.tronicsat.com,0.55,100
+80.66.72.211,2026-07-06 23:18:04,2026-07-07 03:38:53,SMTP/mail brute force,2,0,Unknown ASN/Provider,No PTR record,0.46,100
+45.148.10.183,2026-06-08 03:08:05,2026-06-12 03:08:38,SSH brute force,30,6,Unknown ASN/Provider,No PTR record,0.31,100
+80.94.92.171,2026-06-08 05:40:31,2026-06-10 01:09:05,SSH brute force,12,0,Unknown ASN/Provider,No PTR record,0.28,100
+2.57.122.238,2026-06-08 03:03:29,2026-06-13 01:08:51,SSH brute force,30,6,Unknown ASN/Provider,No PTR record,0.25,100
+213.209.159.158,2026-06-09 21:13:55,2026-06-12 18:03:44,SSH brute force,12,2,Unknown ASN/Provider,No PTR record,0.17,100
+190.2.135.111,2026-06-10 23:26:39,2026-06-13 10:55:27,SSH brute force,10,2,Unknown ASN/Provider,190-2-135-111.hosted-by-worldstream.net,0.17,100
+193.46.255.86,2026-06-09 11:31:58,2026-06-13 19:18:12,SSH brute force,16,0,Unknown ASN/Provider,No PTR record,0.15,100
+18.218.118.203,2026-06-25 10:37:34,2026-07-03 14:51:14,Repeat offender (recidive); SMTP/mail brute force,25,1,AS16509 - Amazon AWS,scan.visionheight.com,0.13,100
+176.65.139.130,2026-06-08 15:20:04,2026-06-10 16:00:27,SSH brute force,5,0,Unknown ASN/Provider,No PTR record,0.1,100
+3.143.162.210,2026-06-27 18:33:48,2026-06-30 17:04:43,SMTP/mail brute force,7,0,AS16509 - Amazon AWS,scan.visionheight.com,0.1,100
+158.94.211.198,2026-07-02 07:32:44,2026-07-03 05:07:25,SMTP/mail brute force,2,0,AS202412 - Omegatech LTD,No PTR record,0.09,100
+94.154.43.36,2026-06-28 16:20:14,2026-06-30 07:01:03,SMTP/mail brute force,2,0,Unknown ASN/Provider,No PTR record,0.05,100
+45.156.87.254,2026-06-10 08:05:45,2026-06-12 11:42:16,SSH brute force,2,0,Unknown ASN/Provider,No PTR record,0.04,100
+3.130.168.2,2026-06-16 18:43:39,2026-06-30 13:26:28,SMTP/mail brute force,13,0,AS16509 - Amazon AWS,scan.visionheight.com,0.04,100
+185.242.226.19,2026-06-16 19:51:10,2026-06-28 09:43:45,SMTP/mail brute force,11,2,Unknown ASN/Provider,security.criminalip.com,0.04,100
+18.116.101.220,2026-06-17 15:29:02,2026-07-05 19:40:01,Repeat offender (recidive); SMTP/mail brute force,18,1,AS16509 - VisionHeight (AWS),scan.visionheight.com,0.04,100
+184.105.139.68,2026-06-30 13:46:13,2026-07-02 11:06:50,SMTP/mail brute force,2,0,AS6939 - Hurricane Electric,scan-02.shadowserver.io,0.04,100
+80.94.92.168,2026-06-10 06:43:29,2026-06-13 06:36:46,SSH brute force,2,0,Unknown ASN/Provider,No PTR record,0.03,100
+3.129.187.38,2026-06-27 10:49:25,2026-07-07 07:47:34,Repeat offender (recidive); SMTP/mail brute force,8,1,AS16509 - Amazon AWS,scan.visionheight.com,0.03,100
+34.230.221.101,2026-06-29 09:44:34,2026-07-02 08:48:25,SMTP/mail brute force,2,0,AS16509 - Amazon AWS,ec2-34-230-221-101.compute-1.amazonaws.com,0.03,100
+16.58.56.214,2026-06-17 11:38:13,2026-07-04 06:10:31,Repeat offender (recidive); SMTP/mail brute force,8,1,Unknown ASN/Provider,scan.visionheight.com,0.02,100
+64.89.160.164,2026-06-30 08:38:28,2026-07-07 08:53:24,SMTP/mail brute force,4,0,Unknown ASN/Provider,No PTR record,0.02,100
+109.105.210.77,2026-07-01 19:33:26,2026-07-08 07:49:37,SMTP/mail brute force,3,0,Unknown ASN/Provider,zl-dfwc-us-gp5-wk101a.internet-census.org,0.02,100
+71.6.232.24,2026-06-16 13:12:34,2026-06-30 16:09:49,SMTP/mail brute force,2,0,AS10439 - CariNet,No PTR record,0.01,100
+20.40.216.95,2026-06-24 23:19:41,2026-07-05 01:44:36,SMTP/mail brute force,2,0,AS8075 - Microsoft Azure,azpdcggvzxs6.stretchoid.com,0.01,100
+69.5.169.180,2026-06-26 04:19:44,2026-07-02 05:33:59,SMTP/mail brute force,2,0,Unknown ASN/Provider,69-5-169-180.infrawat.ch,0.01,100
+98.89.204.118,2026-06-26 06:19:45,2026-07-05 11:11:59,SMTP/mail brute force,2,0,Unknown ASN/Provider,ec2-98-89-204-118.compute-1.amazonaws.com,0.01,100
+64.89.163.9,2026-06-26 14:13:06,2026-07-07 19:41:21,SMTP/mail brute force,3,0,Unknown ASN/Provider,No PTR record,0.01,100
+178.16.53.230,2026-06-28 04:14:11,2026-07-03 20:38:39,SMTP/mail brute force,2,0,Unknown ASN/Provider,No PTR record,0.01,100
+64.62.156.10,2026-06-28 13:56:59,2026-07-08 01:30:29,SMTP/mail brute force,2,0,AS6939 - Hurricane Electric,scan-60-0.shadowserver.io,0.01,100
+2.192.136.250,2026-06-12 10:42:47,2026-06-12 10:43:07,SSH brute force,3,0,Unknown ASN/Provider,No PTR record,540.0,88
+47.84.90.75,2026-06-10 04:20:00,2026-06-10 04:20:00,SSH brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,82
+194.187.179.146,2026-06-12 17:53:02,2026-06-12 17:53:02,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,78
+47.83.242.81,2026-06-08 23:45:10,2026-06-08 23:45:10,SSH brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,70
+104.243.245.4,2026-06-15 23:36:10,2026-06-16 00:17:55,IMAP/POP3 brute force,8,1,Unknown ASN/Provider,No PTR record,11.5,69
+212.47.242.64,2026-06-10 18:10:33,2026-06-10 18:10:36,SSH brute force,5,1,Unknown ASN/Provider,64-242-47-212.instances.scw.cloud,6000.0,65
+98.80.4.70,2026-06-12 18:58:29,2026-06-12 18:58:29,SSH brute force,1,0,Unknown ASN/Provider,scanner-98-80-4-70.reposify.net,1.0,64
+91.224.92.14,2026-07-08 05:08:39,2026-07-08 05:08:39,SMTP/mail brute force,1,0,Unknown ASN/Provider,srv-91-224-92-14.serveroffer.net,1.0,54
+42.2.18.221,2026-06-10 07:32:31,2026-06-10 07:32:31,SSH brute force,2,0,Unknown ASN/Provider,42-2-18-221.static.netvigator.com,2.0,44
+47.239.14.56,2026-06-28 15:22:22,2026-06-28 15:22:27,SMTP/mail brute force,6,1,AS45102 - Alibaba Cloud,No PTR record,4320.0,34
+176.77.12.198,2026-06-13 15:20:37,2026-06-13 15:21:05,SSH brute force,5,1,Unknown ASN/Provider,No PTR record,642.86,32
+152.32.146.214,2026-06-10 19:16:47,2026-06-10 19:16:47,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,32
+47.236.59.249,2026-07-07 07:58:16,2026-07-07 07:58:16,IMAP/POP3 brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,30
+47.84.84.243,2026-06-29 09:55:50,2026-06-29 09:55:50,IMAP/POP3 brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,28
+136.144.17.203,2026-07-01 01:26:13,2026-07-01 01:26:13,Webmail (Roundcube) brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,27
+136.144.17.194,2026-07-01 01:25:56,2026-07-01 01:25:56,Webmail (Roundcube) brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,24
+185.92.26.155,2026-06-15 02:14:27,2026-06-15 02:14:27,IMAP/POP3 brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,19
+185.92.26.140,2026-06-12 22:40:50,2026-06-12 22:40:50,Webmail (Roundcube) brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,17
+43.98.191.225,2026-06-15 12:13:31,2026-06-15 12:13:31,IMAP/POP3 brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,16
+47.236.183.26,2026-07-07 07:52:27,2026-07-07 07:52:27,SMTP/mail brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,15
+185.92.26.201,2026-06-13 12:33:27,2026-06-13 12:33:27,Webmail (Roundcube) brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,14
+47.236.173.156,2026-06-29 09:47:41,2026-06-29 09:47:41,SMTP/mail brute force,1,0,AS45102 - Alibaba Cloud,No PTR record,1.0,13
+177.193.120.123,2026-06-28 12:55:36,2026-06-28 12:56:09,SMTP/mail brute force,2,0,Unknown ASN/Provider,b1c1787b.virtua.com.br,218.18,10
+61.3.230.48,2026-06-10 02:52:03,2026-06-10 02:52:03,SSH brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,9
+47.83.114.17,2026-07-06 17:46:21,2026-07-06 17:46:23,Repeat offender (recidive); SMTP/mail brute force,6,1,AS45102 - Alibaba Cloud,No PTR record,10800.0,1
+162.216.150.123,2026-06-29 05:29:37,2026-06-29 05:30:42,SMTP/mail brute force,3,0,AS15169 - Google Cloud,123.150.216.162.bc.googleusercontent.com,166.15,0
+162.216.150.152,2026-07-05 17:51:50,2026-07-05 17:52:49,SMTP/mail brute force,2,0,AS15169 - Google Cloud,152.150.216.162.bc.googleusercontent.com,122.03,0
+35.203.211.111,2026-07-08 13:20:30,2026-07-08 13:21:29,SMTP/mail brute force,2,0,AS396982 - Palo Alto Networks (Cortex Xpanse),111.211.203.35.bc.googleusercontent.com,122.03,0
+147.185.133.46,2026-07-01 09:53:52,2026-07-01 09:54:52,SMTP/mail brute force,2,0,AS15169 - Google Cloud,No PTR record,120.0,0
+35.203.210.142,2026-06-29 01:51:01,2026-06-29 01:53:14,SMTP/mail brute force,2,0,AS396982 - Palo Alto Networks (Cortex Xpanse),142.210.203.35.bc.googleusercontent.com,54.14,0
+162.216.149.218,2026-07-07 21:21:08,2026-07-07 21:26:25,Repeat offender (recidive); SMTP/mail brute force,4,1,AS15169 - Google Cloud,218.149.216.162.bc.googleusercontent.com,45.43,0
+147.185.133.34,2026-07-08 09:37:33,2026-07-08 09:43:02,Repeat offender (recidive); SMTP/mail brute force,4,1,AS15169 - Google Cloud,No PTR record,43.77,0
+198.235.24.73,2026-06-16 19:43:36,2026-06-16 19:43:36,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+35.203.210.44,2026-06-17 02:11:17,2026-06-17 02:11:17,SMTP/mail brute force,1,0,AS396982 - Palo Alto Networks (Cortex Xpanse),44.210.203.35.bc.googleusercontent.com,1.0,0
+147.185.133.176,2026-06-24 19:04:03,2026-06-24 19:04:03,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+198.235.24.55,2026-06-24 23:55:26,2026-06-24 23:55:26,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+198.235.24.17,2026-06-25 02:09:56,2026-06-25 02:09:56,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+205.210.31.103,2026-06-25 21:26:44,2026-06-25 21:26:44,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+162.216.149.226,2026-06-26 02:14:52,2026-06-26 02:14:52,SMTP/mail brute force,1,0,AS15169 - Google Cloud,226.149.216.162.bc.googleusercontent.com,1.0,0
+147.185.133.110,2026-06-26 05:42:31,2026-06-26 05:42:31,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+205.210.31.171,2026-06-26 19:09:59,2026-06-26 19:09:59,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+198.235.24.152,2026-06-26 21:06:57,2026-06-26 21:06:57,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+162.216.149.154,2026-06-26 21:59:30,2026-06-26 21:59:30,SMTP/mail brute force,1,0,AS15169 - Google Cloud,154.149.216.162.bc.googleusercontent.com,1.0,0
+162.216.150.58,2026-06-26 22:26:30,2026-06-26 22:26:30,SMTP/mail brute force,1,0,AS15169 - Google Cloud,58.150.216.162.bc.googleusercontent.com,1.0,0
+66.227.30.163,2026-06-27 02:55:12,2026-06-27 02:55:12,Webmail (Roundcube) brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+162.216.150.99,2026-06-28 23:37:19,2026-06-28 23:37:19,SMTP/mail brute force,1,0,AS15169 - Google Cloud,99.150.216.162.bc.googleusercontent.com,1.0,0
+205.210.31.170,2026-06-29 02:32:47,2026-06-29 02:32:47,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+198.235.24.154,2026-06-29 06:07:01,2026-06-29 06:07:01,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+198.235.24.123,2026-06-30 03:04:51,2026-06-30 03:04:51,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+147.185.132.210,2026-06-30 18:38:46,2026-06-30 18:38:46,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+198.235.24.131,2026-06-30 19:47:27,2026-06-30 19:47:27,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+35.203.210.87,2026-07-01 00:32:44,2026-07-01 00:32:44,SMTP/mail brute force,1,0,AS396982 - Palo Alto Networks (Cortex Xpanse),87.210.203.35.bc.googleusercontent.com,1.0,0
+216.25.89.138,2026-07-01 09:26:45,2026-07-01 09:26:45,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+147.185.132.54,2026-07-01 21:45:48,2026-07-01 21:45:48,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+198.235.24.18,2026-07-01 23:12:23,2026-07-01 23:12:23,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+147.185.133.137,2026-07-02 08:34:13,2026-07-02 08:34:13,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+162.216.150.253,2026-07-02 18:29:55,2026-07-02 18:29:55,SMTP/mail brute force,1,0,AS15169 - Google Cloud,253.150.216.162.bc.googleusercontent.com,1.0,0
+198.235.24.151,2026-07-02 20:39:43,2026-07-02 20:39:43,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+205.210.31.152,2026-07-03 05:47:26,2026-07-03 05:47:26,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+35.203.210.254,2026-07-03 13:37:12,2026-07-03 13:37:12,SMTP/mail brute force,1,0,AS396982 - Palo Alto Networks (Cortex Xpanse),254.210.203.35.bc.googleusercontent.com,1.0,0
+147.185.132.86,2026-07-03 14:03:23,2026-07-03 14:03:23,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+198.235.24.104,2026-07-03 19:08:40,2026-07-03 19:08:40,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+205.210.31.29,2026-07-03 20:19:41,2026-07-03 20:19:41,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+35.203.211.163,2026-07-04 04:59:20,2026-07-04 04:59:20,SMTP/mail brute force,1,0,AS396982 - Palo Alto Networks (Cortex Xpanse),163.211.203.35.bc.googleusercontent.com,1.0,0
+198.235.24.138,2026-07-04 20:12:37,2026-07-04 20:12:37,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+147.185.132.90,2026-07-04 22:16:49,2026-07-04 22:16:49,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+162.216.149.103,2026-07-05 00:39:54,2026-07-05 00:39:54,SMTP/mail brute force,1,0,AS15169 - Google Cloud,103.149.216.162.bc.googleusercontent.com,1.0,0
+147.185.133.229,2026-07-05 18:19:25,2026-07-05 18:19:25,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+198.235.24.176,2026-07-05 21:23:43,2026-07-05 21:23:43,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+205.210.31.158,2026-07-06 00:33:38,2026-07-06 00:33:38,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+147.185.132.145,2026-07-06 02:02:48,2026-07-06 02:02:48,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+147.185.132.19,2026-07-06 20:16:30,2026-07-06 20:16:30,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+205.210.31.151,2026-07-07 00:30:24,2026-07-07 00:30:24,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+147.185.133.180,2026-07-07 23:30:00,2026-07-07 23:30:00,SMTP/mail brute force,1,0,AS15169 - Google Cloud,No PTR record,1.0,0
+198.235.24.9,2026-07-08 04:48:49,2026-07-08 04:48:49,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+198.235.24.84,2026-07-09 01:54:04,2026-07-09 01:54:04,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+198.235.24.145,2026-07-09 04:37:04,2026-07-09 04:37:04,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+205.210.31.165,2026-07-09 22:56:52,2026-07-09 22:56:52,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+205.210.31.3,2026-07-09 23:26:42,2026-07-09 23:26:42,SMTP/mail brute force,1,0,Unknown ASN/Provider,No PTR record,1.0,0
+162.216.149.144,2026-07-10 02:55:22,2026-07-10 02:55:22,SMTP/mail brute force,1,0,AS15169 - Google Cloud,144.149.216.162.bc.googleusercontent.com,1.0,0
+162.216.149.20,2026-07-10 05:40:06,2026-07-10 05:40:06,SMTP/mail brute force,1,0,AS15169 - Google Cloud,20.149.216.162.bc.googleusercontent.com,1.0,0
+205.210.31.148,2026-06-26 04:52:42,2026-06-30 06:21:17,SMTP/mail brute force,2,0,Unknown ASN/Provider,No PTR record,0.02,0
+35.203.211.48,2026-06-27 02:10:04,2026-07-04 18:21:13,SMTP/mail brute force,2,0,AS396982 - Palo Alto Networks (Cortex Xpanse),48.211.203.35.bc.googleusercontent.com,0.01,0
+147.185.132.97,2026-06-28 05:02:00,2026-07-07 22:18:01,SMTP/mail brute force,2,0,AS15169 - Google Cloud,No PTR record,0.01,0
