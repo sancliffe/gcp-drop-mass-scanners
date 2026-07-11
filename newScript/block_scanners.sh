@@ -4,10 +4,11 @@
 set -e
 
 # --- CONFIGURATION ---
-PROJECT_ID=""
+PROJECT_ID="project-67b89d13-0fb7-47c0-92b"
 NETWORK_NAME="default"
 RULE_NAME="network-drop-mass-scanners"
 BLACKLIST_FILE="blacklist.txt"
+MAX_CHARS=7000 # Warning threshold for GCP firewall rule character limit
 
 # Handle arguments
 DRY_RUN=false
@@ -23,18 +24,27 @@ if [ ! -f "$BLACKLIST_FILE" ]; then
 fi
 
 # --- DATA PROCESSING ---
-# 1. Strip comments, empty lines, and extract the first column (IP/CIDR)
-# 2. Join into a comma-separated list
-SOURCE_RANGES=$(grep -v '^#' "$BLACKLIST_FILE" | grep -v '^\s*$' | awk '{print $1}' | paste -sd, -)
+# 1. sed: Remove everything from '#' to the end of the line (cleans inline comments)
+# 2. awk: Only print lines that start with a number (handles headers and empty lines)
+# 3. paste: Join with commas
+SOURCE_RANGES=$(sed 's/#.*//' "$BLACKLIST_FILE" | awk '/^[0-9]/ {print $1}' | paste -sd, -)
 
 if [ -z "$SOURCE_RANGES" ]; then
-    echo "Error: No valid ranges found in $BLACKLIST_FILE."
+    echo "Error: No valid IP/CIDR ranges found in $BLACKLIST_FILE."
     exit 1
+fi
+
+# --- SAFETY CHECKS ---
+CURRENT_LEN=${#SOURCE_RANGES}
+echo "Blacklist generated ($CURRENT_LEN characters)."
+if [ "$CURRENT_LEN" -gt "$MAX_CHARS" ]; then
+    echo "WARNING: Your blacklist is nearing the GCP firewall rule character limit ($MAX_CHARS)."
+    echo "Consider migrating to a Network Firewall Policy."
 fi
 
 # --- DEPLOYMENT ---
 if [ "$DRY_RUN" = true ]; then
-    echo "Would apply the following ranges:"
+    echo "--- DRY RUN: Would apply the following ranges ---"
     echo "$SOURCE_RANGES"
     exit 0
 fi
@@ -60,4 +70,4 @@ else
         --description="Drop persistent mass-scanners (via blocklist)."
 fi
 
-echo "Deployment complete. Monitor traffic in GCP Cloud Logging."
+echo "Deployment complete."
