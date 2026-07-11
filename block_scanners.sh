@@ -5,106 +5,69 @@ set -e
 
 # --- CONFIGURATION ---
 PROJECT_ID=""
-NETWORK_name="default"
+NETWORK_NAME="default"
 RULE_NAME="network-drop-mass-scanners"
+BLACKLIST_FILE="blacklist.txt"
+MAX_CHARS=7000 # Warning threshold for GCP firewall rule character limit
 
-# --- IP BLOCKS TO BLOCK ---
-TARGET_RANGES=(
-    # --- Primary Edge Routing Blocks ---
-    "184.105.136.0/22"   # Hurricane Electric / Network Indexers
-    "141.212.0.0/16"     # Censys Scanning Subnets
-    "162.243.128.0/19"   # DigitalOcean / Initial Scanner Blocks
-    "71.6.232.0/24"      # CariNet Scanning Block
-    "94.102.49.0/24"     # Shodan Census Indexing Block
-    "35.203.210.0/23"    # Palo Alto Networks / Cortex Xpanse Scanners
-    "18.116.101.0/24"    # VisionHeight / AWS Commercial Scanners
-    "94.26.106.0/24"     # Persistent Scanner Block (July 7th)
-    "216.180.246.0/24"   # Nokia Deepfield Scanners
-    "194.26.29.0/24"     # Onyphe Cyber Defense Search Engine
-    "192.241.0.0/16"     # Stretchoid / DigitalOcean Telemetry Block 1
-    "198.199.0.0/16"     # Stretchoid / DigitalOcean Telemetry Block 2
-    "65.49.1.0/24"       # Shadowserver Foundation (Primary)
-    "216.218.206.0/24"   # Shadowserver Foundation (Secondary)
-    "74.82.47.0/24"      # Shadowserver Foundation (Tertiary)
+# Handle arguments
+DRY_RUN=false
+if [[ "$1" == "--dry-run" ]]; then
+    DRY_RUN=true
+    echo "!!! DRY RUN MODE ACTIVE - No changes will be applied !!!"
+fi
 
-    # --- Added: newly identified scanners/research projects from fail2ban log review ---
-    "185.242.226.0/24"   # Criminal IP
-    "69.5.169.0/24"      # InfraWatch
-    "45.156.128.0/24"    # Internet Census
-    "109.105.210.0/24"   # Internet Census
-    "85.217.149.0/24"    # Modat
-    "159.223.217.0/24"   # Modat / CyberResilience.io
-    "161.35.70.0/24"     # Modat / CyberResilience.io
-    "91.196.152.0/24"    # ONYPHE
-    "91.230.168.0/24"    # ONYPHE
-    "91.231.89.0/24"     # ONYPHE
-    "94.231.206.0/24"    # ONYPHE
-    "195.184.76.0/24"    # ONYPHE
-    "98.80.4.0/24"       # Reposify
-    "64.62.156.0/24"     # Shadowserver Foundation
-    "64.62.197.0/24"     # Shadowserver Foundation
-    "65.49.20.0/24"      # Shadowserver Foundation
-    "184.105.247.0/24"   # Shadowserver Foundation
-    "71.6.167.0/24"      # Shodan
-    "89.248.167.0/24"    # Shodan
-    "93.174.95.0/24"     # Shodan
-    "20.40.216.0/24"     # Stretchoid (Azure)
-    "20.42.92.0/24"      # Stretchoid (Azure)
-    "20.64.104.0/24"     # Stretchoid (Azure)
-    "20.64.105.0/24"     # Stretchoid (Azure)
-    "20.65.193.0/24"     # Stretchoid (Azure)
-    "20.65.194.0/24"     # Stretchoid (Azure)
-    "20.80.88.0/24"      # Stretchoid (Azure)
-    "20.81.46.0/24"      # Stretchoid (Azure)
-    "20.83.167.0/24"     # Stretchoid (Azure)
-    "20.121.67.0/24"     # Stretchoid (Azure)
-    "20.163.15.0/24"     # Stretchoid (Azure)
-    "20.163.32.0/24"     # Stretchoid (Azure)
-    "20.168.5.0/24"      # Stretchoid (Azure)
-    "20.168.120.0/24"    # Stretchoid (Azure)
-    "20.168.123.0/24"    # Stretchoid (Azure)
-    "20.168.127.0/24"    # Stretchoid (Azure)
-    "20.169.105.0/24"    # Stretchoid (Azure)
-    "20.169.107.0/24"    # Stretchoid (Azure)
-    "20.171.8.0/24"      # Stretchoid (Azure)
-    "20.221.60.0/24"     # Stretchoid (Azure)
-    "40.67.161.0/24"     # Stretchoid (Azure)
-    "40.124.120.0/24"    # Stretchoid (Azure)
-    "40.124.173.0/24"    # Stretchoid (Azure)
-    "40.124.174.0/24"    # Stretchoid (Azure)
-    "40.124.180.0/24"    # Stretchoid (Azure)
-    "40.124.186.0/24"    # Stretchoid (Azure)
-    "52.188.191.0/24"    # Stretchoid (Azure)
-    "57.152.34.0/24"     # Stretchoid (Azure)
-    "135.222.40.0/24"    # Stretchoid
-    "135.237.126.0/24"   # Stretchoid
-    "172.174.211.0/24"   # Stretchoid (Azure)
-    "172.174.244.0/24"   # Stretchoid (Azure)
-    "172.202.118.0/24"   # Stretchoid (Azure)
-)
+# Validate blacklist exists
+if [ ! -f "$BLACKLIST_FILE" ]; then
+    echo "Error: $BLACKLIST_FILE not found."
+    exit 1
+fi
 
-# Join the array elements into a comma-separated string
-SOURCE_RANGES=$(IFS=,; echo "${TARGET_RANGES[*]}")
+# --- DATA PROCESSING ---
+# 1. sed: Remove everything from '#' to the end of the line (cleans inline comments)
+# 2. awk: Only print lines that start with a number (handles headers and empty lines)
+# 3. paste: Join with commas
+SOURCE_RANGES=$(sed 's/#.*//' "$BLACKLIST_FILE" | awk '/^[0-9]/ {print $1}' | paste -sd, -)
 
-echo "Checking if firewall rule '${RULE_NAME}' already exists..."
+if [ -z "$SOURCE_RANGES" ]; then
+    echo "Error: No valid IP/CIDR ranges found in $BLACKLIST_FILE."
+    exit 1
+fi
 
-# Check if the rule exists
+# --- SAFETY CHECKS ---
+CURRENT_LEN=${#SOURCE_RANGES}
+echo "Blacklist generated ($CURRENT_LEN characters)."
+if [ "$CURRENT_LEN" -gt "$MAX_CHARS" ]; then
+    echo "WARNING: Your blacklist is nearing the GCP firewall rule character limit ($MAX_CHARS)."
+    echo "Consider migrating to a Network Firewall Policy."
+fi
+
+# --- DEPLOYMENT ---
+if [ "$DRY_RUN" = true ]; then
+    echo "--- DRY RUN: Would apply the following ranges ---"
+    echo "$SOURCE_RANGES"
+    exit 0
+fi
+
+echo "Deploying firewall rule '${RULE_NAME}'..."
+
 if gcloud compute firewall-rules describe "$RULE_NAME" --project="$PROJECT_ID" &>/dev/null; then
-    echo "Rule exists. Updating the source ranges..."
+    echo "Rule exists. Updating ranges..."
     gcloud compute firewall-rules update "$RULE_NAME" \
         --project="$PROJECT_ID" \
         --source-ranges="$SOURCE_RANGES"
 else
-    echo "Rule does not exist. Creating a new DENY rule..."
+    echo "Rule does not exist. Creating..."
     gcloud compute firewall-rules create "$RULE_NAME" \
         --project="$PROJECT_ID" \
-        --network="$NETWORK_name" \
+        --network="$NETWORK_NAME" \
         --action=DENY \
         --rules=all \
         --direction=INGRESS \
         --priority=10 \
+        --enable-logging \
         --source-ranges="$SOURCE_RANGES" \
-        --description="Drop persistent mass-scanners and network indexers at the edge."
+        --description="Drop persistent mass-scanners (via blocklist)."
 fi
 
-echo "Firewall infrastructure update complete."
+echo "Deployment complete."
