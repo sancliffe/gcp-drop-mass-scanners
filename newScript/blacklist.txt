@@ -1,5 +1,3 @@
-Primary Edge Routing Blocks
-
 184.105.136.0/22   # Hurricane Electric / Network Indexers
 141.212.0.0/16     # Censys Scanning Subnets
 162.243.128.0/19   # DigitalOcean / Initial Scanner Blocks
@@ -15,9 +13,6 @@ Primary Edge Routing Blocks
 65.49.1.0/24       # Shadowserver Foundation (Primary)
 216.218.206.0/24   # Shadowserver Foundation (Secondary)
 74.82.47.0/24      # Shadowserver Foundation (Tertiary)
-
-Added: newly identified scanners/research projects from fail2ban log review
-
 185.242.226.0/24   # Criminal IP
 69.5.169.0/24      # InfraWatch
 45.156.128.0/24    # Internet Census
