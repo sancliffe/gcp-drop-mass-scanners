@@ -9,6 +9,7 @@ The repo ships three standalone scripts, each of which creates or updates a **GC
 | `block_scanners.sh` | `network-drop-mass-scanners` | `10` | General internet scanners, indexers, and research crawlers (Shodan, Censys, Stretchoid, ONYPHE, etc.) |
 | `block_vdsina.sh` | `network-drop-vdsina` | `11` | VDSina / Unmanaged LTD hosting ranges observed in Fail2Ban logs |
 | `block_omegatech.sh` | `network-drop-omegatech` | `12` | Omegatech LTD (AS202412) hosting ranges |
+| `block_hydracomms.sh` | `network-drop-hydracomms` | `12` | Hardcoded in-script | Hydra Communications (AS25369) hosting ranges |
 
 ## How it works
 
