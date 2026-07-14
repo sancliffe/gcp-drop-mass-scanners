@@ -4,11 +4,11 @@ A lightweight, automated toolkit for blocking traffic from known internet mass s
 
 The repo ships three standalone scripts, each of which creates or updates a **GCP VPC firewall rule** that denies **all ingress traffic** from a curated list of IP ranges, plus a `live_data/` folder of Fail2Ban telemetry used to identify new ranges to block.
 
-| Script | Firewall rule name | Priority | Source of ranges | Target |
-|---|---|---|---|---|
-| `block_scanners.sh` | `network-drop-mass-scanners` | `10` | `blacklist.txt` | General internet scanners, indexers, and research crawlers (Shodan, Censys, Stretchoid, ONYPHE, etc.) |
-| `block_vdsina.sh` | `network-drop-vdsina` | `11` | Hardcoded in-script | VDSina / Unmanaged LTD hosting ranges observed in Fail2Ban logs |
-| `block_omegatech.sh` | `network-drop-omegatech` | `12` | Hardcoded in-script | Omegatech LTD (AS202412) hosting ranges |
+| Script | Firewall rule name | Priority | Target |
+|---|---|---|---|
+| `block_scanners.sh` | `network-drop-mass-scanners` | `10` | General internet scanners, indexers, and research crawlers (Shodan, Censys, Stretchoid, ONYPHE, etc.) |
+| `block_vdsina.sh` | `network-drop-vdsina` | `11` | VDSina / Unmanaged LTD hosting ranges observed in Fail2Ban logs |
+| `block_omegatech.sh` | `network-drop-omegatech` | `12` | Omegatech LTD (AS202412) hosting ranges |
 | `block_hydracomms.sh` | `network-drop-hydracomms` | `12` | Hardcoded in-script | Hydra Communications (AS25369) hosting ranges |
 
 ## How it works
