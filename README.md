@@ -2,28 +2,29 @@
 
 A lightweight, automated toolkit for blocking traffic from known internet mass scanners, indexers, and abusive hosting ranges — such as Shodan, Censys, Stretchoid, ONYPHE, Palo Alto Cortex Xpanse, and others — from reaching your Google Cloud Platform (GCP) infrastructure.
 
-The repo ships three standalone scripts, each of which creates or updates a **GCP VPC firewall rule** that denies **all ingress traffic** from a curated list of IP ranges, plus a `live_data/` folder of Fail2Ban telemetry used to identify new ranges to block.
+The repo ships five standalone scripts, each of which creates or updates a **GCP VPC firewall rule** that denies **all ingress traffic** from a curated list of IP ranges, plus a CSV log of individually observed IPs used to identify new ranges to block.
 
-| Script | Firewall rule name | Priority | Target |
-|---|---|---|---|
-| `block_scanners.sh` | `network-drop-mass-scanners` | `10` | General internet scanners, indexers, and research crawlers (Shodan, Censys, Stretchoid, ONYPHE, etc.) |
-| `block_vdsina.sh` | `network-drop-vdsina` | `11` | VDSina / Unmanaged LTD hosting ranges observed in Fail2Ban logs |
-| `block_omegatech.sh` | `network-drop-omegatech` | `12` | Omegatech LTD (AS202412) hosting ranges |
-| `block_hydracomms.sh` | `network-drop-hydracomms` | `12` | Hardcoded in-script | Hydra Communications (AS25369) hosting ranges |
+| Script                | Firewall rule name           | Priority | Target                                                                                                |
+| --------------------- | ----------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| `block_scanners.sh`   | `network-drop-mass-scanners`  | `10`     | General internet scanners, indexers, and research crawlers (Shodan, Censys, Stretchoid, ONYPHE, etc.) |
+| `block_vdsina.sh`     | `network-drop-vdsina`         | `11`     | VDSina / Unmanaged LTD hosting ranges observed in Fail2Ban logs                                       |
+| `block_omegatech.sh`  | `network-drop-omegatech`      | `12`     | Omegatech LTD (AS202412) hosting ranges                                                               |
+| `block_hydracomms.sh` | `network-drop-hydracomms`     | `12`     | Hydra Communications (AS25369) — hardcoded in-script                                                  |
+| `block_lordvps.sh`    | `network-drop-lordvps`        | `12`     | LORDVPS (AS209425) — hardcoded in-script                                                              |
 
 ## How it works
 
 All three scripts share the same deployment pattern:
 
-1. Assemble a comma-separated list of CIDR ranges to block (from `blacklist.txt` for `block_scanners.sh`, or from a hardcoded `TARGET_RANGES` array for the other two).
-2. Check whether the script's firewall rule already exists in the target GCP project.
-3. **If the rule exists**, update its `--source-ranges` to match the current list.
-4. **If the rule does not exist**, create a new `DENY` ingress rule with:
-   - `--action=DENY`
-   - `--rules=all`
-   - `--direction=INGRESS`
-   - the priority listed in the table above
-   - the configured source ranges
+1. Joins a hardcoded array of scanner/abuse CIDR ranges (`TARGET_RANGES`) into a single comma-separated string.
+2. Checks whether its firewall rule already exists in the target GCP project.
+3. **If the rule exists**, it updates the rule's `--source-ranges` to match the current list.
+4. **If the rule does not exist**, it creates a new `DENY` ingress rule with:
+  - `--action=DENY`
+  - `--rules=all`
+  - `--direction=INGRESS`
+  - the priority listed in the table above
+  - the configured source ranges
 
 This makes each script idempotent — safe to re-run any time you add or remove ranges, without needing to manually delete and recreate the rule.
 
@@ -50,13 +51,21 @@ The script also:
 
 Blocks ranges associated with **VDSina / Unmanaged LTD** (Russian Federation hosting), including a specific `/24` captured directly from Fail2Ban logs and the two known upstream `AS48282` / `AS216071` blocks.
 
-> **Note:** this script currently ships with `PROJECT_ID` hardcoded to a specific project. If you fork or reuse this script, replace it with your own project ID (or blank it out, as `block_omegatech.sh` does) before committing changes back.
+> **Note:** this script currently ships with `PROJECT_ID` hardcoded to a specific project. If you fork or reuse this script, replace it with your own project ID (or blank it out, as the other scripts do) before committing changes back.
 
 ### `block_omegatech.sh`
 
 Blocks a single `/21` range belonging to **Omegatech LTD (AS202412)**, identified as a source of malicious traffic.
 
-### `live_data/`
+### `block_hydracomms.sh`
+
+Blocks the largest announced prefixes belonging to **Hydra Communications (AS25369)** — 10 `/20`–`/21` ranges hardcoded in-script. AS25369 announces 200+ prefixes total; GCP caps a single firewall rule at 256 source ranges, so only the largest blocks are included.
+
+### `block_lordvps.sh`
+
+Blocks `81.30.98.0/24`, a range belonging to **LORDVPS (AS209425)**. RIPE allocation `IR-LORDVPS11-20240618`, registered to "Atis Omran Sevin PSJ" (Tehran, IR), with a generic Gmail abuse contact rather than a corporate abuse desk. Identified from `postfix`/`postscreen` PREGREET failures — bots across ~8 IPs in the range sending `EHLO` before the server's SMTP greeting, a common signature of spam-bot software rather than legitimate mail clients. Also listed on AbuseIPDB. This is a newly created (2024) block on a low-reputation VPS host, so an outright `/24` block is low-risk.
+
+### `unique_ips.csv`
 
 Raw and enriched Fail2Ban telemetry used as the research basis for new blocklist entries — not consumed directly by any of the block scripts.
 
@@ -90,7 +99,7 @@ Look for IPs in the enriched CSV with a high `AbuseIPDB Confidence Score (%)` an
 
 Before running any script, edit its configuration block at the top:
 
-```bash
+```
 PROJECT_ID=""          # Your GCP project ID (required)
 NETWORK_NAME="default" # The VPC network the rule should apply to
 RULE_NAME="..."        # Pre-set per script; change only if you want a different rule name
@@ -102,13 +111,15 @@ RULE_NAME="..."        # Pre-set per script; change only if you want a different
 
 Run whichever script(s) match the traffic you want to block:
 
-```bash
-chmod +x block_scanners.sh block_vdsina.sh block_omegatech.sh
+```
+chmod +x block_scanners.sh block_vdsina.sh block_omegatech.sh block_hydracomms.sh block_lordvps.sh
 
 ./block_scanners.sh --dry-run   # optional: preview the assembled source-ranges first
 ./block_scanners.sh
 ./block_vdsina.sh
 ./block_omegatech.sh
+./block_hydracomms.sh
+./block_lordvps.sh
 ```
 
 Each script prints output confirming whether its rule was created or updated, ending with a completion message (e.g. `Deployment complete.`).
@@ -124,7 +135,7 @@ Each script prints output confirming whether its rule was created or updated, en
 
 **`block_vdsina.sh` / `block_omegatech.sh`** — edit the `TARGET_RANGES` array in the relevant script and re-run it:
 
-```bash
+```
 TARGET_RANGES=(
     "62.113.112.0/20"  # Known VDSina AS48282 primary block
     "203.0.113.0/24"   # New range you're adding
@@ -141,10 +152,9 @@ Because the scripts are idempotent, they're good candidates for scheduling (e.g.
 
 ## Notes & caveats
 
-- All three scripts use `set -e`, so they'll exit immediately on any `gcloud` error (e.g. bad project ID, insufficient permissions).
+- All scripts use `set -e`, so they'll exit immediately on any `gcloud` error (e.g. bad project ID, insufficient permissions).
 - Each rule denies **all protocols/ports** (`--rules=all`) from its listed ranges — this is a blanket edge block, not a targeted port rule.
-- The three rules use adjacent priorities (`10`, `11`, `12`), giving them high precedence over other rules in the VPC — make sure they don't unintentionally conflict with rules you rely on elsewhere.
-- `block_scanners.sh` warns once `blacklist.txt` pushes `--source-ranges` past 7000 characters, since GCP firewall rules have a fixed limit on that field's length — plan a migration to a Network Firewall Policy before you hit it.
+- `block_omegatech.sh`, `block_hydracomms.sh`, and `block_lordvps.sh` share priority `12` since each targets a distinct, non-overlapping range — collisions aren't a concern, but keep this in mind if you rename or consolidate rules.
 - IP ranges owned by scanning services and hosting providers can change over time. Periodically verify entries against current provider documentation (e.g. Shodan, Censys, Palo Alto Cortex Xpanse) or WHOIS/ASN lookups rather than assuming these lists stay accurate indefinitely.
 - `block_vdsina.sh` ships with a project ID already filled in — review before running against your own environment, and avoid committing real project IDs, IPs, API keys, or logs you don't want public if you extend this repo.
 - Never commit your `ABUSEIPDB_API_KEY` — `enrich_telemetry.py` expects it as an environment variable for this reason.
