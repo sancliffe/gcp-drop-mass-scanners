@@ -64,7 +64,7 @@ else
         --action=DENY \
         --rules=all \
         --direction=INGRESS \
-        --priority=10 \
+        --priority=11 \
         --enable-logging \
         --source-ranges="$SOURCE_RANGES" \
         --description="Drop persistent mass-scanners (via blocklist)."
