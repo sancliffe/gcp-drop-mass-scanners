@@ -6,8 +6,8 @@ set -e
 # --- CONFIGURATION ---
 PROJECT_ID=""
 NETWORK_NAME="default"
-RULE_NAME="network-drop-mass-scanners"
-BLACKLIST_FILE="blacklist-scanners.txt"
+RULE_NAME="network-drop-attackers"
+BLACKLIST_FILE="blacklist-attackers.txt"
 MAX_CHARS=7000 # Warning threshold for GCP firewall rule character limit
 
 # Handle arguments
