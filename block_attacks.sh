@@ -6,8 +6,8 @@ set -e
 # --- CONFIGURATION ---
 PROJECT_ID=""
 NETWORK_NAME="default"
-RULE_NAME="network-drop-mass-scanners"
-BLACKLIST_FILE="blacklist-scanners.txt"
+RULE_NAME="network-drop-attackers"
+BLACKLIST_FILE="blacklist-attackers.txt"
 MAX_CHARS=7000 # Warning threshold for GCP firewall rule character limit
 
 # Handle arguments
@@ -64,7 +64,7 @@ else
         --action=DENY \
         --rules=all \
         --direction=INGRESS \
-        --priority=11 \
+        --priority=10 \
         --enable-logging \
         --source-ranges="$SOURCE_RANGES" \
         --description="Drop persistent mass-scanners (via blocklist)."

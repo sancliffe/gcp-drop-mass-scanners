@@ -2,11 +2,12 @@
 
 A lightweight, automated toolkit for blocking traffic from known internet mass scanners, indexers, and abusive hosting ranges — such as Shodan, Censys, Stretchoid, ONYPHE, Palo Alto Cortex Xpanse, and others — from reaching your Google Cloud Platform (GCP) infrastructure.
 
-The repo ships five standalone scripts, each of which creates or updates a **GCP VPC firewall rule** that denies **all ingress traffic** from a curated list of IP ranges, plus a CSV log of individually observed IPs used to identify new ranges to block.
+The repo ships several standalone shell scripts, each of which creates or updates a **GCP VPC firewall rule** that denies **all ingress traffic** from a curated list of IP ranges. It also includes Python scripts for analyzing log data to identify new ranges to block.
 
 | Script                | Firewall rule name           | Priority | Target                                                                                                |
 | --------------------- | ----------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
-| `block_scanners.sh`   | `network-drop-mass-scanners`  | `10`     | General internet scanners, indexers, and research crawlers (Shodan, Censys, Stretchoid, ONYPHE, etc.) |
+| `block_attacks.sh`    | `network-drop-attackers`      | `10`     | General abusive IPs/ranges sourced from a local blacklist file (`blacklist-attackers.txt`)            |
+| `block_scanners.sh`   | `network-drop-mass-scanners`  | `11`     | General internet scanners, indexers, and research crawlers (Shodan, Censys, Stretchoid, ONYPHE, etc.) |
 | `block_vdsina.sh`     | `network-drop-vdsina`         | `11`     | VDSina / Unmanaged LTD hosting ranges observed in Fail2Ban logs                                       |
 | `block_omegatech.sh`  | `network-drop-omegatech`      | `12`     | Omegatech LTD (AS202412) hosting ranges                                                               |
 | `block_hydracomms.sh` | `network-drop-hydracomms`     | `12`     | Hydra Communications (AS25369) — hardcoded in-script                                                  |
@@ -14,12 +15,15 @@ The repo ships five standalone scripts, each of which creates or updates a **GCP
 
 ## How it works
 
-All three scripts share the same deployment pattern:
+Each shell script follows a similar pattern:
 
-1. Joins a hardcoded array of scanner/abuse CIDR ranges (`TARGET_RANGES`) into a single comma-separated string.
-2. Checks whether its firewall rule already exists in the target GCP project.
-3. **If the rule exists**, it updates the rule's `--source-ranges` to match the current list.
-4. **If the rule does not exist**, it creates a new `DENY` ingress rule with:
+1.  It gathers a list of IP/CIDR ranges.
+    -   Scripts like `block_vdsina.sh` use a hardcoded `TARGET_RANGES` array inside the script.
+    -   Scripts like `block_scanners.sh` and `block_attacks.sh` read from an external text file (`blacklist-scanners.txt` and `blacklist-attackers.txt`, respectively), allowing for easier updates without modifying the script itself.
+2.  It joins these ranges into a single comma-separated string.
+3.  It checks whether its corresponding firewall rule already exists in the target GCP project.
+4.  **If the rule exists**, it updates the rule's `--source-ranges` to match the current list.
+5.  **If the rule does not exist**, it creates a new `DENY` ingress rule with:
   - `--action=DENY`
   - `--rules=all`
   - `--direction=INGRESS`
@@ -30,22 +34,20 @@ This makes each script idempotent — safe to re-run any time you add or remove 
 
 ## Scripts
 
+### `block_attacks.sh`
+
+Blocks IP ranges sourced from the `blacklist-attackers.txt` file. This script is intended for a general-purpose, manually curated blocklist of IPs observed engaging in hostile activity.
+
 ### `block_scanners.sh`
 
-Blocks known scanner and indexer infrastructure. Reads its ranges from `blacklist.txt` (currently 70+ CIDR ranges) rather than a hardcoded list, so updating the blocklist is just a file edit — no script changes needed. Providers currently represented include:
+Blocks known scanner and indexer infrastructure by reading ranges from `blacklist-scanners.txt`. The list includes providers such as:
 
 - Censys, Shodan, ONYPHE, Modat, Criminal IP, Reposify — research/indexing scanners
 - Palo Alto Cortex Xpanse, Shadowserver Foundation, InfraWatch, Internet Census — security research scanners
 - Stretchoid — a large block of Microsoft Azure–hosted ranges tied to persistent unsolicited scanning
 - Hurricane Electric, DigitalOcean, CariNet, VisionHeight, Nokia Deepfield — hosting ranges observed scanning directly
 
-The script also:
-
-- Supports a `--dry-run` flag that prints the assembled `--source-ranges` string without touching GCP, so you can sanity-check a `blacklist.txt` edit before deploying it.
-- Warns (but does not block) if the assembled source-ranges string exceeds `MAX_CHARS` (7000 characters by default) — GCP firewall rules have a hard character limit on `--source-ranges`, so this flags when it's time to consider migrating to a [Network Firewall Policy](https://cloud.google.com/firewall/docs/firewall-policies-overview) instead.
-- Deploys the rule with `--enable-logging`, so blocked traffic shows up in Cloud Logging.
-
-> `blacklist.txt` is the authoritative, up-to-date list — check it directly rather than relying on the summary above.
+> This list is maintained in the `blacklist-scanners.txt` file and grows over time as new scanners are identified from log review. Check that file for the authoritative, up-to-date list.
 
 ### `block_vdsina.sh`
 
@@ -65,28 +67,19 @@ Blocks the largest announced prefixes belonging to **Hydra Communications (AS253
 
 Blocks `81.30.98.0/24`, a range belonging to **LORDVPS (AS209425)**. RIPE allocation `IR-LORDVPS11-20240618`, registered to "Atis Omran Sevin PSJ" (Tehran, IR), with a generic Gmail abuse contact rather than a corporate abuse desk. Identified from `postfix`/`postscreen` PREGREET failures — bots across ~8 IPs in the range sending `EHLO` before the server's SMTP greeting, a common signature of spam-bot software rather than legitimate mail clients. Also listed on AbuseIPDB. This is a newly created (2024) block on a low-reputation VPS host, so an outright `/24` block is low-risk.
 
-### `unique_ips.csv`
+### Data Analysis & Research Scripts
 
-Raw and enriched Fail2Ban telemetry used as the research basis for new blocklist entries — not consumed directly by any of the block scripts.
+The `/live_data` directory contains Python scripts used for research and analysis to identify new threats. These scripts are not run as part of the deployment but are used to process log data and enrich it with external threat intelligence.
 
-| File | Description |
-|---|---|
-| `fail2ban_ip_summary_with_asn_and_rdns.csv` | Base export of individual IPs observed hitting `sshd`, `postfix`, `dovecot`, and other jails, with columns: `IP Address, First Seen, Last Seen, Reason(s) / Jail(s), Connection Attempts, Times Banned, ASN & Owner, Reverse DNS (PTR)` |
-| `fail2ban_ip_summary_enriched.csv` | Output of `enrich_telemetry.py` — the same data with two additional columns: `Velocity (Attempts/Hour)` and `AbuseIPDB Confidence Score (%)`, sorted with the highest-confidence, highest-velocity offenders first |
-| `enrich_telemetry.py` | Python script that reads the base CSV, computes attack velocity per IP, queries the [AbuseIPDB](https://www.abuseipdb.com/) API for a 30-day abuse confidence score per IP, and writes the enriched CSV |
+#### `lookup_blacklist.py`
 
-To run the enrichment script:
+This script takes a list of IPs/CIDRs (like `blacklist-attackers.txt`) and enriches it by looking up the PTR record, ASN, and owner for each entry. This helps in identifying the source and nature of the traffic.
 
-```bash
-pip install pandas requests
-export ABUSEIPDB_API_KEY="your_key_here"
-cd live_data
-python3 enrich_telemetry.py
-```
+#### `enrich_telemetry.py`
 
-The script reads `ABUSEIPDB_API_KEY` from the environment (never hardcode it) and paces requests with a 200ms delay between calls to stay under AbuseIPDB's free-tier rate limit.
+This script processes a CSV of observed IPs (e.g., from Fail2Ban logs), calculates attack velocity, and queries the AbuseIPDB API to get a "confidence score" for how malicious an IP is reputed to be. The output helps prioritize which IPs or ranges are candidates for blocking.
 
-Look for IPs in the enriched CSV with a high `AbuseIPDB Confidence Score (%)` and `Velocity (Attempts/Hour)`, confirm the owning ASN, and add the CIDR to `blacklist.txt` (for general scanners) or the appropriate `TARGET_RANGES` array (for provider-specific scripts).
+> These scripts help turn raw log data into actionable intelligence, which can then be used to update the `TARGET_RANGES` in the shell scripts or the contents of the `blacklist-*.txt` files.
 
 ## Prerequisites
 
@@ -111,10 +104,10 @@ RULE_NAME="..."        # Pre-set per script; change only if you want a different
 
 Run whichever script(s) match the traffic you want to block:
 
-```
-chmod +x block_scanners.sh block_vdsina.sh block_omegatech.sh block_hydracomms.sh block_lordvps.sh
+```bash
+chmod +x *.sh
 
-./block_scanners.sh --dry-run   # optional: preview the assembled source-ranges first
+./block_attacks.sh
 ./block_scanners.sh
 ./block_vdsina.sh
 ./block_omegatech.sh
