@@ -1,110 +1,91 @@
 #!/usr/bin/env python3
 """
-Looks up PTR record, ASN, and owner (org) for each IP/CIDR range in blacklist.txt.
+Looks up PTR record, ASN, and owner (org) for each IP/CIDR range in the provided text file.
 
-Install dependencies first:
+Dependencies:
     pip install ipwhois dnspython
-
-Usage:
-    python lookup_blacklist.py blacklist.txt output.csv
-
-Notes:
-- PTR records only make sense for a single IP, not a whole /24 or /16 range.
-  For each range, this script queries PTR on the *network address* (first IP)
-  of the block as a representative sample. If you want PTR for every single
-  IP in a /16, that's 65,536 DNS queries per range -- not something you want
-  to do for 80 ranges. Adjust SAMPLE_MODE below if you need per-host PTRs for
-  smaller ranges.
-- ASN/owner data comes from RDAP (via ipwhois), which queries the regional
-  internet registries (ARIN, RIPE, APNIC, etc.) directly.
-- This will make ~80-160 network calls total and may take a few minutes.
-  Some ranges (especially large ISPs) may rate-limit; the script retries once.
 """
 
 import csv
 import sys
 import time
 import ipaddress
-
-try:
-    import dns.resolver
-    import dns.reversename
-except ImportError:
-    sys.exit("Missing dependency: run `pip install dnspython --break-system-packages`")
-
-try:
-    from ipwhois import IPWhois
-except ImportError:
-    sys.exit("Missing dependency: run `pip install ipwhois --break-system-packages`")
-
+import dns.resolver
+import dns.reversename
+from ipwhois import IPWhois
 
 def get_ptr(ip):
     try:
         rev_name = dns.reversename.from_address(ip)
         resolver = dns.resolver.Resolver()
-        resolver.timeout = 3
-        resolver.lifetime = 3
+        resolver.timeout = 2
+        resolver.lifetime = 2
         answer = resolver.resolve(rev_name, "PTR")
         return "; ".join(str(r).rstrip(".") for r in answer)
-    except Exception as e:
-        return f"(no PTR / {type(e).__name__})"
+    except:
+        return "(no PTR)"
 
-
-def get_asn_owner(ip, retries=1):
-    for attempt in range(retries + 1):
-        try:
-            obj = IPWhois(ip)
-            res = obj.lookup_rdap(depth=1)
-            asn = res.get("asn", "")
-            asn_desc = res.get("asn_description", "")
-            network = res.get("network", {}) or {}
-            owner = network.get("name", "") or asn_desc
-            return asn, asn_desc, owner
-        except Exception as e:
-            if attempt < retries:
-                time.sleep(1)
-                continue
-            return "N/A", "N/A", f"(lookup failed: {type(e).__name__})"
-
+def get_asn_owner(ip):
+    try:
+        obj = IPWhois(ip)
+        res = obj.lookup_rdap(depth=1)
+        asn = res.get("asn", "N/A")
+        asn_desc = res.get("asn_description", "N/A")
+        owner = res.get("network", {}).get("name", "N/A")
+        return asn, asn_desc, owner
+    except:
+        return "N/A", "N/A", "Lookup Failed"
 
 def main():
-    infile = sys.argv[1] if len(sys.argv) > 1 else "blacklist.txt"
-    outfile = sys.argv[2] if len(sys.argv) > 2 else "blacklist_lookup.csv"
+    # Use the filename provided as the first argument, or default to stdin/hardcoded list
+    filename = sys.argv[1] if len(sys.argv) > 1 else "blacklist-scanners.txt"
+    outfile = "blacklist_enriched.csv"
 
-    with open(infile) as f:
-        entries = [line.strip() for line in f if line.strip()]
+    print(f"Reading from {filename}...")
+    
+    try:
+        with open(filename, 'r') as f:
+            # We strip whitespace and ignore empty lines
+            lines = [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        sys.exit(f"Error: {filename} not found.")
 
     rows = []
-    for i, entry in enumerate(entries, 1):
+    total = len(lines)
+
+    for i, line in enumerate(lines, 1):
         try:
-            net = ipaddress.ip_network(entry, strict=False)
+            # Force IPv4 network object creation.
+            # strict=False allows treating "192.168.1.1/24" as a network 192.168.1.0/24
+            net = ipaddress.ip_network(line, strict=False)
+            sample_ip = str(net.network_address)
+            
+            print(f"[{i}/{total}] Processing {line} (Sample: {sample_ip})...")
+            
+            ptr = get_ptr(sample_ip)
+            asn, asn_desc, owner = get_asn_owner(sample_ip)
+            
+            rows.append({
+                "Entry": line,
+                "Sample_IP": sample_ip,
+                "PTR": ptr,
+                "ASN": asn,
+                "ASN_Desc": asn_desc,
+                "Owner": owner
+            })
+            
+            # Rate limiting to prevent IP blacklisting from the look-up providers
+            time.sleep(0.5)
+            
         except ValueError:
-            print(f"[{i}/{len(entries)}] SKIP invalid entry: {entry}")
-            continue
+            print(f"[{i}/{total}] Skipping invalid entry: {line}")
 
-        sample_ip = str(net.network_address)
-        print(f"[{i}/{len(entries)}] {entry} -> sampling {sample_ip}")
-
-        ptr = get_ptr(sample_ip)
-        asn, asn_desc, owner = get_asn_owner(sample_ip)
-
-        rows.append({
-            "CIDR/IP": entry,
-            "Sample IP": sample_ip,
-            "PTR Record": ptr,
-            "ASN": asn,
-            "ASN Description": asn_desc,
-            "Owner": owner,
-        })
-        time.sleep(0.3)  # be polite to RDAP/DNS servers
-
-    with open(outfile, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+    with open(outfile, 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=["Entry", "Sample_IP", "PTR", "ASN", "ASN_Desc", "Owner"])
         writer.writeheader()
         writer.writerows(rows)
 
-    print(f"\nDone. Wrote {len(rows)} rows to {outfile}")
-
+    print(f"\nProcessing complete. Results saved to {outfile}")
 
 if __name__ == "__main__":
     main()
