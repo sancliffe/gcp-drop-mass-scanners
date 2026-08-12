@@ -15,8 +15,9 @@ RULE_NAME="network-drop-stretchoid"
 # AbuseIPDB confidence score of 100 with hundreds to thousands of reports
 # each as of the lookup date.
 # First 18 identified 2026-08-09 (blacklist-scanners_enriched.csv); next 2
-# added 2026-08-09 (blacklist-attackers_enriched.csv); final 7 added
-# 2026-08-09 (blacklist-scanners_enriched.csv re-upload).
+# added 2026-08-09 (blacklist-attackers_enriched.csv); next 7 added
+# 2026-08-09 (blacklist-scanners_enriched.csv re-upload); final 7 added
+# 2026-08-09 (server_connections09072026_enriched.csv).
 TARGET_RANGES=(
   "9.234.8.52/32"       # azpdcgjpwmec.stretchoid.com
   "20.29.23.166/32"     # azpdcg9mstn5.stretchoid.com
@@ -45,6 +46,13 @@ TARGET_RANGES=(
   "135.237.124.78/32"   # azpdegbmiu12.stretchoid.com
   "172.210.9.231/32"    # azpdeskyhklc.stretchoid.com
   "172.210.68.2/32"     # azpdesj0pi01.stretchoid.com
+  "4.227.179.79/32"     # azpdegtchq2h.stretchoid.com
+  "13.89.124.219/32"    # azpdcsl3sa4k.stretchoid.com
+  "20.29.8.147/32"      # azpdcgsp1rt5.stretchoid.com
+  "20.118.241.146/32"   # azpdcg5wkarh.stretchoid.com
+  "20.163.33.221/32"    # azpdwsn72i3k.stretchoid.com
+  "20.221.71.226/32"    # azpdcetl7xvx.stretchoid.com
+  "135.233.96.247/32"   # azpdcsxcy271.stretchoid.com
 )
 
 # Join the array elements into a comma-separated string
