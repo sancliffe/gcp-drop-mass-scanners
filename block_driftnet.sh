@@ -24,6 +24,7 @@ TARGET_RANGES=(
   "185.247.137.49/32"   # r4-49-31.monitoring.internet-measurement.com
   "185.247.137.72/32"   # r4-72-48.monitoring.internet-measurement.com
   "185.247.137.80/32"   # r4-80-50.monitoring.internet-measurement.com
+  "185.247.137.131/32"     # r4-131-83.monitoring.internet-measurement.com
   "185.247.137.150/32"  # r4-150-96.monitoring.internet-measurement.com
   "195.96.139.45/32"    # r5-45-2d.monitoring.internet-measurement.com
   "195.96.139.51/32"    # r5-51-33.monitoring.internet-measurement.com
